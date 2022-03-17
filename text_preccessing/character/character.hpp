@@ -13,7 +13,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        bool computeIsASCII(wchar_t input_char);
+        static bool computeIsASCII(wchar_t input_char);
         /**
          * @brief computes if character is alpha numeric
          * 
@@ -21,7 +21,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        bool computeIsAlnum(wchar_t input_char);
+        static bool computeIsAlnum(wchar_t input_char);
 
         /**
          * @brief computes if character is alphabetic
@@ -30,7 +30,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        bool computeIsAlpha(wchar_t input_char);
+        static bool computeIsAlpha(wchar_t input_char);
 
         /**
          * @brief computes if character is blank character
@@ -39,7 +39,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        bool computeIsBlank(wchar_t input_char);
+        static bool computeIsBlank(wchar_t input_char);
 
         /**
          * @brief computes if character control character
@@ -48,7 +48,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        bool computeIsCtrl(wchar_t input_char);
+        static bool computeIsCtrl(wchar_t input_char);
 
         /**
          * @brief computes if character is digit
@@ -57,7 +57,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        bool computeIsDigit(wchar_t input_char);
+        static bool computeIsDigit(wchar_t input_char);
 
         /**
          * @brief computes if character is in lowercase
@@ -66,7 +66,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        bool computeIsLower(wchar_t input_char);
+        static bool computeIsLower(wchar_t input_char);
 
         /**
          * @brief computes if character is printable
@@ -75,7 +75,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        bool computeIsPrint(wchar_t input_char);
+        static bool computeIsPrint(wchar_t input_char);
 
         /**
          * @brief computes if character is punctuation character
@@ -84,7 +84,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        bool computeIsPunct(wchar_t input_char);
+        static bool computeIsPunct(wchar_t input_char);
 
         /**
          * @brief computes if character is space character
@@ -93,7 +93,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        bool computeIsSpace(wchar_t input_char);
+        static bool computeIsSpace(wchar_t input_char);
 
         /**
          * @brief computes if character is uppercase
@@ -102,7 +102,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        bool computeIsUpper(wchar_t input_char);
+        static bool computeIsUpper(wchar_t input_char);
 
         /**
          * @brief computes if character is represented is hexadecimal
@@ -111,7 +111,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        bool computeIsXdigit(wchar_t input_char);
+        static bool computeIsXdigit(wchar_t input_char);
 
         /**
          * @brief computes if character is graphical character
@@ -120,7 +120,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        bool computeIsGraph(wchar_t input_char);
+        static bool computeIsGraph(wchar_t input_char);
 
 
        
@@ -130,7 +130,7 @@ class Character_Compute{
          * @param character 
          * @return wchar_t 
          */
-        wchar_t computeToLower(wchar_t character);
+        static wchar_t computeToLower(wchar_t character);
 
         /**
          * @brief computes uppercase version of character
@@ -138,7 +138,7 @@ class Character_Compute{
          * @param character 
          * @return wchar_t 
          */
-        wchar_t computeToUpper(wchar_t character);
+        static wchar_t computeToUpper(wchar_t character);
 
 
 };
@@ -148,29 +148,13 @@ class Character_Compute{
  * as making non-space character be space character
  * 
  */
-class Character : private Character_Compute{
+class Character{
     protected:
         /**
          * @brief containes the character represented by Character object
          * 
          */
         wchar_t current_char;
-        bool is_ASCII;
-        bool is_alnum;
-        bool is_alpha;
-        bool is_blank;
-        bool is_cntrl;
-        bool is_digit;
-        bool is_lower;
-        bool is_print;
-        bool is_punct;
-        bool is_space;
-        bool is_upper;
-        bool is_xdigit;
-        bool is_graph;
-
-        wchar_t lower_char;
-        wchar_t upper_char;
 
         /**
          * @brief update attributes for character in case character was changed
@@ -206,12 +190,6 @@ class Character : private Character_Compute{
          * @return false 
          */
         bool isalpha();
-        /**
-         * @brief sets character as alphabetic
-         * 
-         * @param value 
-         */
-        void isalpha(bool value);
 
         /**
          * @brief checks if character is used to seperate words(e.g default: space and hrizontal tab)
@@ -220,12 +198,6 @@ class Character : private Character_Compute{
          * @return false 
          */
         bool isblank();
-        /**
-         * @brief set chararacter as blank character
-         * 
-         * @param value 
-         */
-        void isblank(bool value);
 
         /**
          * @brief checks if character is control character
@@ -234,12 +206,6 @@ class Character : private Character_Compute{
          * @return false 
          */
         bool iscntrl();
-        /**
-         * @brief set character as control character
-         * 
-         * @param value 
-         */
-        void iscntrl(bool value);
 
         /**
          * @brief checks if character is digit
@@ -248,12 +214,6 @@ class Character : private Character_Compute{
          * @return false 
          */
         bool isdigit();
-        /**
-         * @brief set character as digit
-         * 
-         * @param value 
-         */
-        void isdigit(bool value);
 
         /**
          * @brief checks if character is in lowercase
@@ -262,12 +222,6 @@ class Character : private Character_Compute{
          * @return false 
          */
         bool islower();
-        /**
-         * @brief set chracter as lowercase
-         * 
-         * @param value 
-         */
-        void islower(bool value);
 
         /**
          * @brief checks if character is printable
@@ -276,12 +230,6 @@ class Character : private Character_Compute{
          * @return false 
          */
         bool isprint();
-        /**
-         * @brief set chracter as printable
-         * 
-         * @param value 
-         */
-        void isprint(bool value);
 
         /**
          * @brief checks if character is punctuation
@@ -290,12 +238,6 @@ class Character : private Character_Compute{
          * @return false 
          */
         bool ispunct();
-        /**
-         * @brief set chracter as puctuation character
-         * 
-         * @param value 
-         */
-        void ispunct(bool value);
 
         /**
          * @brief checks if character is white space
@@ -304,12 +246,6 @@ class Character : private Character_Compute{
          * @return false 
          */
         bool isspace();
-        /**
-         * @brief set chracter as space character
-         * 
-         * @param value 
-         */
-        void isspace(bool value);
 
         /**
          * @brief checks if charcter is in uppercase
@@ -318,12 +254,6 @@ class Character : private Character_Compute{
          * @return false 
          */
         bool isupper();
-        /**
-         * @brief set chracter as uppercase
-         * 
-         * @param value 
-         */
-        void isupper(bool value);
 
         /**
          * @brief checks if chraracter is represented as hexadecimal digit(0-9, a-f, A-F)
@@ -332,12 +262,6 @@ class Character : private Character_Compute{
          * @return false 
          */
         bool isxdigit();
-        /**
-         * @brief set chracter as hexadecimal digit
-         * 
-         * @param value 
-         */
-        void isxdigit(bool value);
 
         /**
          * @brief checks character is graphical(Alphanumeric and Punctuation characters)
@@ -346,12 +270,6 @@ class Character : private Character_Compute{
          * @return false 
          */
         bool isgraph();
-        /**
-         * @brief set chracter as graphical character
-         * 
-         * @param value 
-         */
-        void isgraph(bool value);
 
         /**
          * @brief checks if character is part ASCII character sets
@@ -360,12 +278,6 @@ class Character : private Character_Compute{
          * @return false 
          */
         bool isASCII();
-        /**
-         * @brief set character as part of ASCII character sets
-         * 
-         * @param value
-         */
-        void isASCII(bool value);
 
         /**
          * @brief converts stored character to lowercase
@@ -373,22 +285,12 @@ class Character : private Character_Compute{
          * @return int 
          */
         wchar_t tolower();
-        /**
-         * @brief set lowercase version of character
-         * 
-         */
-        void tolower(wchar_t character);
 
         /**
          * @brief converts stored character to uppercase
          * 
          */
         wchar_t toupper();
-        /**
-         * @brief set uppercase version of character
-         * 
-         */
-        void toupper(wchar_t character);
 
         /**
          * @brief Sets attractribute containing the character

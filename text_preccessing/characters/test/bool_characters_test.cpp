@@ -16,11 +16,13 @@ using namespace std;
 void Bool_Characters_Test(){
     clog << "Test: Started Bool_Characters Class Test using" << endl;
     string input_string(1000000, 'c');
-    Bool_Characters* obj  = new Bool_Characters(input_string);
-   
+    Characters* obj = new Characters(input_string);
+    bool_chars_type results = Bool_Characters::boolIsUpper(*obj);
+    
     //assert(obj.boolIsPunct().size() == obj.length());
 
-    cout << "size of Bool characters is " <<  obj->length() << endl;
+    cout << "size of characters is " <<  obj->length() << endl;
+    cout << "size of results is " <<  results[2] << endl;
 
     clog << "Test: Bool_Characters Class passed tests successfully" << endl;
 }
