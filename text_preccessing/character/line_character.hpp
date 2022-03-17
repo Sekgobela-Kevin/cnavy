@@ -15,7 +15,7 @@ class Compute_Line_Character{
          * @return true 
          * @return false 
          */
-        bool computeIsNewLineChar(wchar_t character);
+        bool computeIsNewLineChar(char_type character);
         /**
          * @brief computes if character is question mark
          * 
@@ -23,7 +23,7 @@ class Compute_Line_Character{
          * @return true 
          * @return false 
          */
-        bool computeIsQuestChar(wchar_t character);
+        bool computeIsQuestChar(char_type character);
 
 };
 
@@ -44,7 +44,7 @@ class Line_Character : public Character, protected Compute_Line_Character{
          * @brief update attributes for character in case character was changed
          * @param input_char
          */
-        virtual void updateAttrs(wchar_t input_char);
+        virtual void updateAttrs(char_type input_char);
 
     public:
         /**
@@ -52,7 +52,7 @@ class Line_Character : public Character, protected Compute_Line_Character{
          * 
          * @param input_char 
          */
-        Line_Character(wchar_t input_char);
+        Line_Character(char_type input_char);
         /**
          * @brief checks if character represent new line character
          * 

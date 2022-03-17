@@ -1,24 +1,24 @@
 #include "character.hpp"
 
 
-Character::Character(wchar_t input_char){
+Character::Character(char_type input_char){
     this->current_char = input_char;
     //this->updateAttrs(input_char);
 
 }
 
-void Character::updateAttrs(wchar_t input_char){
+void Character::updateAttrs(char_type input_char){
     
 }
 
-void Character::setCurrentChar(wchar_t input_char, bool update_atrr){
+void Character::setCurrentChar(char_type input_char, bool update_atrr){
     this->current_char = input_char;
     if(update_atrr){
         this->updateAttrs(this->current_char);
     }
 }
 
-wchar_t Character::getCurrentChar(){
+char_type Character::getCurrentChar(){
     return this->current_char;
 }
 
@@ -80,10 +80,10 @@ bool Character::isxdigit(){
     return Character_Compute::computeIsXdigit(this->current_char);
 }
 
-wchar_t Character::tolower(){
+char_type Character::tolower(){
     return Character_Compute::computeToLower(this->current_char);
 }
 
-wchar_t Character::toupper(){
+char_type Character::toupper(){
     return Character_Compute::computeToUpper(this->current_char);
 }

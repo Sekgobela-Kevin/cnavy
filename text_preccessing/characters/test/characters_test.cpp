@@ -12,7 +12,7 @@ using namespace std;
 
 void Characters_Test(){
     clog << "Test: Started Characters Class Test using" << endl;
-    string input_string(1000000, 'c');
+    string input_string(100000000, 'c');
     Characters* obj = new Characters(input_string);
 
     cout << "size of characters is " <<  obj->length() << endl;

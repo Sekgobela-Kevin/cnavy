@@ -1,13 +1,13 @@
 #include "line_character.hpp"
 
 
-Line_Character::Line_Character(wchar_t input_char) : Character(input_char){
+Line_Character::Line_Character(char_type input_char) : Character(input_char){
     // C++ will call this method here and inside base class when creating it
     // To prevent multiple calls, remove similar line in base Class constructor
     //this->updateAttrs(input_char);
 }
 
-void Line_Character::updateAttrs(wchar_t input_char){
+void Line_Character::updateAttrs(char_type input_char){
     this->is_new_line_char = computeIsNewLineChar(this->is_new_line_char);
     this->is_quest_char = computeIsQuestChar(input_char);
     Character::updateAttrs(input_char);

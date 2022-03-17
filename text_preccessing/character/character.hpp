@@ -1,3 +1,4 @@
+typedef char char_type;
 /**
  * @brief computes what character represent using other means including asking os.
  * CLass constains basic implemetations of getting data about character using <cctype>.
@@ -13,7 +14,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        static bool computeIsASCII(wchar_t input_char);
+        static bool computeIsASCII(char_type input_char);
         /**
          * @brief computes if character is alpha numeric
          * 
@@ -21,7 +22,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        static bool computeIsAlnum(wchar_t input_char);
+        static bool computeIsAlnum(char_type input_char);
 
         /**
          * @brief computes if character is alphabetic
@@ -30,7 +31,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        static bool computeIsAlpha(wchar_t input_char);
+        static bool computeIsAlpha(char_type input_char);
 
         /**
          * @brief computes if character is blank character
@@ -39,7 +40,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        static bool computeIsBlank(wchar_t input_char);
+        static bool computeIsBlank(char_type input_char);
 
         /**
          * @brief computes if character control character
@@ -48,7 +49,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        static bool computeIsCtrl(wchar_t input_char);
+        static bool computeIsCtrl(char_type input_char);
 
         /**
          * @brief computes if character is digit
@@ -57,7 +58,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        static bool computeIsDigit(wchar_t input_char);
+        static bool computeIsDigit(char_type input_char);
 
         /**
          * @brief computes if character is in lowercase
@@ -66,7 +67,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        static bool computeIsLower(wchar_t input_char);
+        static bool computeIsLower(char_type input_char);
 
         /**
          * @brief computes if character is printable
@@ -75,7 +76,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        static bool computeIsPrint(wchar_t input_char);
+        static bool computeIsPrint(char_type input_char);
 
         /**
          * @brief computes if character is punctuation character
@@ -84,7 +85,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        static bool computeIsPunct(wchar_t input_char);
+        static bool computeIsPunct(char_type input_char);
 
         /**
          * @brief computes if character is space character
@@ -93,7 +94,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        static bool computeIsSpace(wchar_t input_char);
+        static bool computeIsSpace(char_type input_char);
 
         /**
          * @brief computes if character is uppercase
@@ -102,7 +103,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        static bool computeIsUpper(wchar_t input_char);
+        static bool computeIsUpper(char_type input_char);
 
         /**
          * @brief computes if character is represented is hexadecimal
@@ -111,7 +112,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        static bool computeIsXdigit(wchar_t input_char);
+        static bool computeIsXdigit(char_type input_char);
 
         /**
          * @brief computes if character is graphical character
@@ -120,7 +121,7 @@ class Character_Compute{
          * @return true 
          * @return false 
          */
-        static bool computeIsGraph(wchar_t input_char);
+        static bool computeIsGraph(char_type input_char);
 
 
        
@@ -128,17 +129,17 @@ class Character_Compute{
          * @brief computes lowercase version of character
          * 
          * @param character 
-         * @return wchar_t 
+         * @return char_type 
          */
-        static wchar_t computeToLower(wchar_t character);
+        static char_type computeToLower(char_type character);
 
         /**
          * @brief computes uppercase version of character
          * 
          * @param character 
-         * @return wchar_t 
+         * @return char_type 
          */
-        static wchar_t computeToUpper(wchar_t character);
+        static char_type computeToUpper(char_type character);
 
 
 };
@@ -154,13 +155,13 @@ class Character{
          * @brief containes the character represented by Character object
          * 
          */
-        wchar_t current_char;
+        char_type current_char;
 
         /**
          * @brief update attributes for character in case character was changed
          * @param input_char
          */
-        virtual void updateAttrs(wchar_t input_char);
+        virtual void updateAttrs(char_type input_char);
 
     public:
         /**
@@ -168,7 +169,7 @@ class Character{
          * 
          * @param input_char 
          */
-        Character(wchar_t input_char);
+        Character(char_type input_char);
         /**
          * @brief checks if character is alpha numeric
          * 
@@ -284,13 +285,13 @@ class Character{
          * 
          * @return int 
          */
-        wchar_t tolower();
+        char_type tolower();
 
         /**
          * @brief converts stored character to uppercase
          * 
          */
-        wchar_t toupper();
+        char_type toupper();
 
         /**
          * @brief Sets attractribute containing the character
@@ -298,11 +299,11 @@ class Character{
          * @param input_char 
          * @param update_atrr specifies of object attributes be changed to match new character
          */
-        void setCurrentChar(wchar_t input_char, bool update_atrr=false);
+        void setCurrentChar(char_type input_char, bool update_atrr=false);
         /**
          * @brief retrieves underlying character
          * 
-         * @return wchar_t 
+         * @return char_type 
          */
-        wchar_t getCurrentChar();
+        char_type getCurrentChar();
 };
