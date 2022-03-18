@@ -1,6 +1,6 @@
 #include "string"
 #include <vector>
-#include "..\character\line_character.hpp"
+#include "..\character\character.hpp"
 
 /**
  * @brief type that stores sequence of Characters of objects
@@ -10,7 +10,7 @@ typedef Character character_type;
 typedef std::vector<character_type> characters_objs_type;
 
 /**
- * @brief Base class for charcters. \n
+ * @brief Base class for characters. \n
  * Characters is just collection of Character objects in sequence
  * managed by single object.
  * This Class provide base methods shared by all Characters Classes.
@@ -29,6 +29,14 @@ class Characters : public std::string{
          * @param input_text string to be represented
          */
         Characters(std::string input_text);
+        
+        /**
+         * @brief update data about object with new calculated data from input_text.
+         * Intended for testing purposes, never use in production.
+         * 
+         * @param input_text 
+         */
+        void update(std::string input_text);
 
         /**
          * @brief returns string version of the object
