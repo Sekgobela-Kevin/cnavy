@@ -1,3 +1,5 @@
+#pragma once
+
 typedef char char_type;
 /**
  * @brief computes what character represent using other means including asking os.

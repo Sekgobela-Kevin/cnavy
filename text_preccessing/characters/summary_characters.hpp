@@ -1,3 +1,4 @@
+#pragma once
 #include "ratio_characters.hpp"
 
 /**
