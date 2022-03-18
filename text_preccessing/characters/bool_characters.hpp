@@ -1,7 +1,5 @@
-#include <functional>
 #include <vector>
-#include <string>
-#include "functional"
+#include <functional>
 #include "characters.hpp"
 
 
@@ -31,90 +29,90 @@ class Bool_Characters{
          * 
          * @return bool_chars_type sequence of booleans.
          */
-        static bool_chars_type boolIsASCII(Characters chars_obj);
+        static bool_chars_type isASCII(Characters chars_obj);
         /**
          * @brief returns booleans representing if each character is alphanumeric
          * @param chars_obj object of type Characters
          * 
          * @return bool_chars_type sequence of booleans.
          */
-        static bool_chars_type boolIsAlnum(Characters chars_obj);
+        static bool_chars_type isAlnum(Characters chars_obj);
         /**
          * @brief returns booleans representing if each character is alphabetic
          * @param chars_obj object of type Characters
          * 
          * @return bool_chars_type sequence of booleans.
          */
-        static bool_chars_type boolIsAlpha(Characters chars_obj);
+        static bool_chars_type isAlpha(Characters chars_obj);
         /**
          * @brief returns booleans representing if each character is blank character
          * @param chars_obj object of type Characters
          * 
          * @return bool_chars_type sequence of booleans.
          */
-        static bool_chars_type boolIsBlank(Characters chars_obj);
+        static bool_chars_type isBlank(Characters chars_obj);
         /**
          * @brief returns booleans representing if each character is control character
          * @param chars_obj object of type Characters
          * 
          * @return bool_chars_type sequence of booleans.
          */
-        static bool_chars_type boolIsCntrl(Characters chars_obj);
+        static bool_chars_type isCntrl(Characters chars_obj);
         /**
          * @brief returns booleans representing if each character is digit
          * @param chars_obj object of type Characters
          * 
          * @return bool_chars_type sequence of booleans.
          */
-        static bool_chars_type boolIsDigit(Characters chars_obj);
+        static bool_chars_type isDigit(Characters chars_obj);
         /**
          * @brief returns booleans representing if each character is in lowercase
          * @param chars_obj object of type Characters
          * 
          * @return bool_chars_type sequence of booleans.
          */
-        static bool_chars_type boolIsLower(Characters chars_obj);
+        static bool_chars_type isLower(Characters chars_obj);
         /**
          * @brief returns booleans representing if each character is printable
          * @param chars_obj object of type Characters
          * 
          * @return bool_chars_type sequence of booleans.
          */
-        static bool_chars_type boolIsPrint(Characters chars_obj);
+        static bool_chars_type isPrint(Characters chars_obj);
         /**
          * @brief returns booleans representing if each character is punctuation
          * @param chars_obj object of type Characters
          * 
          * @return bool_chars_type sequence of booleans.
          */
-        static bool_chars_type boolIsPunct(Characters chars_obj);
+        static bool_chars_type isPunct(Characters chars_obj);
         /**
          * @brief returns booleans representing if each character is space character
          * @param chars_obj object of type Characters
          * 
          * @return bool_chars_type sequence of booleans.
          */
-        static bool_chars_type boolIsSpace(Characters chars_obj);
+        static bool_chars_type isSpace(Characters chars_obj);
         /**
          * @brief returns booleans representing if each character is in uppercase
          * @param chars_obj object of type Characters
          * 
          * @return bool_chars_type sequence of booleans.
          */
-        static bool_chars_type boolIsUpper(Characters chars_obj);
+        static bool_chars_type isUpper(Characters chars_obj);
         /**
          * @brief returns booleans representing if each character is valid hexadecimal character
          * @param chars_obj object of type Characters
          * 
          * @return bool_chars_type sequence of booleans.
          */
-        static bool_chars_type boolIsXdigit(Characters chars_obj);
+        static bool_chars_type isXdigit(Characters chars_obj);
         /**
          * @brief returns booleans representing if each character is graphical character
          * @param chars_obj object of type Characters
          * 
          * @return bool_chars_type sequence of booleans.
          */
-        static bool_chars_type boolIsGraph(Characters chars_obj);
+        static bool_chars_type isGraph(Characters chars_obj);
 };
 

@@ -14,65 +14,68 @@ std::function<bool(character_type)> input_func){
     return  booleans;
 }
 
-bool_chars_type Bool_Characters::boolIsAlnum(Characters chars_obj){
+bool_chars_type Bool_Characters::isAlnum(Characters chars_obj){
     characters_objs_type chars_objs = chars_obj.getCharsObjs();
     return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.isalnum();});
 }
 
-bool_chars_type Bool_Characters::boolIsAlpha(Characters chars_obj){
+bool_chars_type Bool_Characters::isAlpha(Characters chars_obj){
     characters_objs_type chars_objs = chars_obj.getCharsObjs();
     return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.isalpha();});
 }
 
-bool_chars_type Bool_Characters::boolIsASCII(Characters chars_obj){
+bool_chars_type Bool_Characters::isASCII(Characters chars_obj){
     characters_objs_type chars_objs = chars_obj.getCharsObjs();
     return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.isASCII();});
 }
 
-bool_chars_type Bool_Characters::boolIsBlank(Characters chars_obj){
+bool_chars_type Bool_Characters::isBlank(Characters chars_obj){
     characters_objs_type chars_objs = chars_obj.getCharsObjs();
     return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.isblank();});
 }
 
-bool_chars_type Bool_Characters::boolIsDigit(Characters chars_obj){
+bool_chars_type Bool_Characters::isCntrl(Characters chars_obj){
+    characters_objs_type chars_objs = chars_obj.getCharsObjs();
+    return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.iscntrl();});
+}
+
+bool_chars_type Bool_Characters::isDigit(Characters chars_obj){
     characters_objs_type chars_objs = chars_obj.getCharsObjs();
     return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.isdigit();});
 }
 
-bool_chars_type Bool_Characters::boolIsGraph(Characters chars_obj){
+bool_chars_type Bool_Characters::isGraph(Characters chars_obj){
     characters_objs_type chars_objs = chars_obj.getCharsObjs();
     return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.isgraph();});
 }
 
-bool_chars_type Bool_Characters::boolIsLower(Characters chars_obj){
+bool_chars_type Bool_Characters::isLower(Characters chars_obj){
     characters_objs_type chars_objs = chars_obj.getCharsObjs();
     return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.islower();});
 }
 
-bool_chars_type Bool_Characters::boolIsPrint(Characters chars_obj){
+bool_chars_type Bool_Characters::isPrint(Characters chars_obj){
     characters_objs_type chars_objs = chars_obj.getCharsObjs();
     return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.isprint();});
 }
 
-bool_chars_type Bool_Characters::boolIsPunct(Characters chars_obj){
+bool_chars_type Bool_Characters::isPunct(Characters chars_obj){
     characters_objs_type chars_objs = chars_obj.getCharsObjs();
     return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.ispunct();});
 }
 
-bool_chars_type Bool_Characters::boolIsSpace(Characters chars_obj){
+bool_chars_type Bool_Characters::isSpace(Characters chars_obj){
     characters_objs_type chars_objs = chars_obj.getCharsObjs();
     return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.isspace();});
 }
 
-bool_chars_type Bool_Characters::boolIsUpper(Characters chars_obj){
+bool_chars_type Bool_Characters::isUpper(Characters chars_obj){
     characters_objs_type chars_objs = chars_obj.getCharsObjs();
     return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.isupper();});
 }
 
-bool_chars_type Bool_Characters::boolIsXdigit(Characters chars_obj){
+bool_chars_type Bool_Characters::isXdigit(Characters chars_obj){
     characters_objs_type chars_objs = chars_obj.getCharsObjs();
     return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.isxdigit();});
 }
-
-
 

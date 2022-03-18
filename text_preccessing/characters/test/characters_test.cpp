@@ -1,22 +1,29 @@
 #include <iostream>
 #include <cassert>
 #include "string"
-#include "..\characters.cpp"
+#include "..\characters.hpp"
 using namespace std;
 
 /*
  g++ ..\character\character.cpp ..\character\character_compute.cpp 
- ..\character\compute_line_character.cpp 
- ..\character\line_character.cpp characters.cpp test\characters_test.cpp
+ characters.cpp test\characters_test.cpp
 */
 
 void Characters_Test(){
     clog << "Test: Started Characters Class Test using" << endl;
-    string input_string(100000000, 'c');
+    string input_string(1, 'c');
     Characters* obj = new Characters(input_string);
+
+    // Characters implemets string
+    // comaparing with string is valid
+    assert(*obj == input_string);
+    obj->update("str");
+    assert(*obj== "str");
 
     cout << "size of characters is " <<  obj->length() << endl;
 
+
+    delete obj;
     clog << "Test: Characters Class passed tests successfully" << endl;
 }
 
@@ -27,6 +34,9 @@ int main(){
 
 
 /*
+--------------------------
+2022 March 16
+--------------------------
 --------------------------
 1. First test
 --------------------------
@@ -154,6 +164,8 @@ of elements. They will impact mostly the document that will house all the charac
 
 /*
 --------------------------
+2022 March 17
+--------------------------
 without update on
 init in Character Class
 --------------------------
@@ -209,3 +221,18 @@ sys     0m0.062s
 --------------------------
 */
 
+
+/*
+--------------------------
+2022 March 18
+--------------------------
+--------------------------
+Characters count - 100 000 000
+real    0m10.900s
+user    0m0.000s
+sys     0m0.046s
+memory  1199 MB
+cpu     50 - 72%
+--------------------------
+
+*/
