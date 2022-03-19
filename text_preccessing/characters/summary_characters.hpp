@@ -13,94 +13,159 @@
 class Summary_Characters{
     public:
         /**
-         * @brief returns booleans representing if each character is ASCII
+         * @brief returns booleans representing if each character is ASCII.
+         * The output depends on truth_ratio(default = 1) which means each character should
+         * pass for true to be returned.
          * @param chars_obj object of type Characters
+         * @param true_ratio number between 0 and 1 in which defines ratio characters that needs 
+         * to be true for this  method return true. 
+         * If its 1 then all charactres needs to be true for this method for this method return true.
          * 
-         * @return bool number between 0 and 1
+         * @return bool
          */
-        static bool isASCII(Characters chars_obj);
+        static bool isASCII(Characters chars_obj, int true_ratio=1);
         /**
-         * @brief returns booleans representing if each character is alphanumeric
+         * @brief returns booleans representing if each character is alphanumeric.
+         * The output depends on truth_ratio(default = 1) which means each character should
+         * pass for true to be returned.
          * @param chars_obj object of type Characters
+         * @param true_ratio number between 0 and 1 in which defines ratio characters that needs 
+         * to be true for this  method return true. 
+         * If its 1 then all charactres needs to be true for this method for this method return true.
          * 
-         * @return bool number between 0 and 1
+         * @return bool
          */
-        static bool isAlnum(Characters chars_obj);
+        static bool isAlnum(Characters chars_obj, int true_ratio=1);
         /**
-         * @brief returns booleans representing if each character is alphabetic
+         * @brief returns booleans representing if each character is alphabetic.
+         * The output depends on truth_ratio(default = 1) which means each character should
+         * pass for true to be returned.
          * @param chars_obj object of type Characters
+         * @param true_ratio number between 0 and 1 in which defines ratio characters that needs 
+         * to be true for this  method return true. 
+         * If its 1 then all charactres needs to be true for this method for this method return true.
          * 
-         * @return bool number between 0 and 1
+         * @return bool
          */
-        static bool isAlpha(Characters chars_obj);
+        static bool isAlpha(Characters chars_obj, int true_ratio=1);
         /**
-         * @brief returns booleans representing if each character is blank character
+         * @brief returns booleans representing if each character is blank character.
+         * The output depends on truth_ratio(default = 1) which means each character should
+         * pass for true to be returned.
          * @param chars_obj object of type Characters
+         * @param true_ratio number between 0 and 1 in which defines ratio characters that needs 
+         * to be true for this  method return true. 
+         * If its 1 then all charactres needs to be true for this method for this method return true.
          * 
-         * @return bool number between 0 and 1
+         * @return bool
          */
-        static bool isBlank(Characters chars_obj);
+        static bool isBlank(Characters chars_obj, int true_ratio=1);
         /**
-         * @brief returns booleans representing if each character is control character
+         * @brief returns booleans representing if each character is control character.
+         * The output depends on truth_ratio(default = 1) which means each character should
+         * pass for true to be returned.
          * @param chars_obj object of type Characters
+         * @param true_ratio number between 0 and 1 in which defines ratio characters that needs 
+         * to be true for this  method return true. 
+         * If its 1 then all charactres needs to be true for this method for this method return true.
          * 
-         * @return bool number between 0 and 1
+         * @return bool
          */
-        static bool isCntrl(Characters chars_obj);
+        static bool isCntrl(Characters chars_obj, int true_ratio=1);
         /**
-         * @brief returns booleans representing if each character is digit
+         * @brief returns booleans representing if each character is digit.
+         * The output depends on truth_ratio(default = 1) which means each character should
+         * pass for true to be returned.
          * @param chars_obj object of type Characters
+         * @param true_ratio number between 0 and 1 in which defines ratio characters that needs 
+         * to be true for this  method return true. 
+         * If its 1 then all charactres needs to be true for this method for this method return true.
          * 
-         * @return bool number between 0 and 1
+         * @return bool
          */
-        static bool isDigit(Characters chars_obj);
+        static bool isDigit(Characters chars_obj, int true_ratio=1);
         /**
-         * @brief returns booleans representing if each character is in lowercase
+         * @brief returns booleans representing if each character is in lowercase.
+         * The output depends on truth_ratio(default = 1) which means each character should
+         * pass for true to be returned.
          * @param chars_obj object of type Characters
+         * @param true_ratio number between 0 and 1 in which defines ratio characters that needs 
+         * to be true for this  method return true. 
+         * If its 1 then all charactres needs to be true for this method for this method return true.
          * 
-         * @return bool number between 0 and 1
+         * @return bool
          */
-        static bool isLower(Characters chars_obj);
+        static bool isLower(Characters chars_obj, int true_ratio=1);
         /**
-         * @brief returns booleans representing if each character is printable
+         * @brief returns booleans representing if each character is printable.
+         * The output depends on truth_ratio(default = 1) which means each character should
+         * pass for true to be returned.
          * @param chars_obj object of type Characters
+         * @param true_ratio number between 0 and 1 in which defines ratio characters that needs 
+         * to be true for this  method return true. 
+         * If its 1 then all charactres needs to be true for this method for this method return true.
          * 
-         * @return bool number between 0 and 1
+         * @return bool
          */
-        static bool isPrint(Characters chars_obj);
+        static bool isPrint(Characters chars_obj, int true_ratio=1);
         /**
-         * @brief returns booleans representing if each character is punctuation
+         * @brief returns booleans representing if each character is punctuation.
+         * The output depends on truth_ratio(default = 1) which means each character should
+         * pass for true to be returned.
          * @param chars_obj object of type Characters
+         * @param true_ratio number between 0 and 1 in which defines ratio characters that needs 
+         * to be true for this  method return true. 
+         * If its 1 then all charactres needs to be true for this method for this method return true.
          * 
-         * @return bool number between 0 and 1
+         * @return bool
          */
-        static bool isPunct(Characters chars_obj);
+        static bool isPunct(Characters chars_obj, int true_ratio=1);
         /**
-         * @brief returns booleans representing if each character is space character
+         * @brief returns booleans representing if each character is space character.
+         * The output depends on truth_ratio(default = 1) which means each character should
+         * pass for true to be returned.
          * @param chars_obj object of type Characters
+         * @param true_ratio number between 0 and 1 in which defines ratio characters that needs 
+         * to be true for this  method return true. 
+         * If its 1 then all charactres needs to be true for this method for this method return true.
          * 
-         * @return bool number between 0 and 1
+         * @return bool
          */
-        static bool isSpace(Characters chars_obj);
+        static bool isSpace(Characters chars_obj, int true_ratio=1);
         /**
-         * @brief returns booleans representing if each character is in uppercase
+         * @brief returns booleans representing if each character is in uppercase.
+         * The output depends on truth_ratio(default = 1) which means each character should
+         * pass for true to be returned.
          * @param chars_obj object of type Characters
+         * @param true_ratio number between 0 and 1 in which defines ratio characters that needs 
+         * to be true for this  method return true. 
+         * If its 1 then all charactres needs to be true for this method for this method return true.
          * 
-         * @return bool number between 0 and 1
+         * @return bool
          */
-        static bool isUpper(Characters chars_obj);
+        static bool isUpper(Characters chars_obj, int true_ratio=1);
         /**
-         * @brief returns booleans representing if each character is valid hexadecimal character
+         * @brief returns booleans representing if each character is valid hexadecimal character.
+         * The output depends on truth_ratio(default = 1) which means each character should
+         * pass for true to be returned.
          * @param chars_obj object of type Characters
+         * @param true_ratio number between 0 and 1 in which defines ratio characters that needs 
+         * to be true for this  method return true. 
+         * If its 1 then all charactres needs to be true for this method for this method return true.
          * 
-         * @return bool number between 0 and 1
+         * @return bool
          */
-        static bool isXdigit(Characters chars_obj);
+        static bool isXdigit(Characters chars_obj, int true_rati=1);
         /**
-         * @brief returns booleans representing if each character is graphical character
+         * @brief returns booleans representing if each character is graphical character.
+         * The output depends on truth_ratio(default = 1) which means each character should
+         * pass for true to be returned.
          * @param chars_obj object of type Characters
+         * @param true_ratio number between 0 and 1 in which defines ratio characters that needs 
+         * to be true for this  method return true. 
+         * If its 1 then all charactres needs to be true for this method for this method return true.
          * 
-         * @return bool number between 0 and 1
+         * @return bool
          */
-        static bool isGraph(Characters chars_obj);
+        static bool isGraph(Characters chars_obj, int true_ratio=1);
 };
