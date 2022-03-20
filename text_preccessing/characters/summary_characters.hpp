@@ -13,7 +13,16 @@
 class Summary_Characters{
     public:
         /**
-         * @brief returns booleans representing if each character is ASCII.
+         * @brief compares 2 true ratios based on requirments of this class(internal use only)
+         * 
+         * @param true_ratio value between 0 and 1
+         * @param result_ratio value between 0 and 1
+         * @return true 
+         * @return false 
+         */
+        static bool ratioCompare(int true_ratio1, int result_ratio);
+        /**
+         * @brief returns boolean representing if each character is ASCII.
          * The output depends on truth_ratio(default = 1) which means each character should
          * pass for true to be returned.
          * @param chars_obj object of type Characters
