@@ -20,7 +20,7 @@ class Summary_Characters{
          * @return true 
          * @return false 
          */
-        static bool ratioCompare(int true_ratio1, int result_ratio);
+        static bool ratioCompare(float true_ratio1, float result_ratio);
         /**
          * @brief returns boolean representing if each character is ASCII.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -32,7 +32,7 @@ class Summary_Characters{
          * 
          * @return bool
          */
-        static bool isASCII(Characters chars_obj, int true_ratio=1);
+        static bool isASCII(Characters chars_obj, float true_ratio=1);
         /**
          * @brief returns booleans representing if each character is alphanumeric.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -44,7 +44,7 @@ class Summary_Characters{
          * 
          * @return bool
          */
-        static bool isAlnum(Characters chars_obj, int true_ratio=1);
+        static bool isAlnum(Characters chars_obj, float true_ratio=1);
         /**
          * @brief returns booleans representing if each character is alphabetic.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -56,7 +56,7 @@ class Summary_Characters{
          * 
          * @return bool
          */
-        static bool isAlpha(Characters chars_obj, int true_ratio=1);
+        static bool isAlpha(Characters chars_obj, float true_ratio=1);
         /**
          * @brief returns booleans representing if each character is blank character.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -68,7 +68,7 @@ class Summary_Characters{
          * 
          * @return bool
          */
-        static bool isBlank(Characters chars_obj, int true_ratio=1);
+        static bool isBlank(Characters chars_obj, float true_ratio=1);
         /**
          * @brief returns booleans representing if each character is control character.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -80,7 +80,7 @@ class Summary_Characters{
          * 
          * @return bool
          */
-        static bool isCntrl(Characters chars_obj, int true_ratio=1);
+        static bool isCntrl(Characters chars_obj, float true_ratio=1);
         /**
          * @brief returns booleans representing if each character is digit.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -92,7 +92,7 @@ class Summary_Characters{
          * 
          * @return bool
          */
-        static bool isDigit(Characters chars_obj, int true_ratio=1);
+        static bool isDigit(Characters chars_obj, float true_ratio=1);
         /**
          * @brief returns booleans representing if each character is in lowercase.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -104,7 +104,7 @@ class Summary_Characters{
          * 
          * @return bool
          */
-        static bool isLower(Characters chars_obj, int true_ratio=1);
+        static bool isLower(Characters chars_obj, float true_ratio=1);
         /**
          * @brief returns booleans representing if each character is printable.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -116,7 +116,7 @@ class Summary_Characters{
          * 
          * @return bool
          */
-        static bool isPrint(Characters chars_obj, int true_ratio=1);
+        static bool isPrint(Characters chars_obj, float true_ratio=1);
         /**
          * @brief returns booleans representing if each character is punctuation.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -128,7 +128,7 @@ class Summary_Characters{
          * 
          * @return bool
          */
-        static bool isPunct(Characters chars_obj, int true_ratio=1);
+        static bool isPunct(Characters chars_obj, float true_ratio=1);
         /**
          * @brief returns booleans representing if each character is space character.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -140,7 +140,7 @@ class Summary_Characters{
          * 
          * @return bool
          */
-        static bool isSpace(Characters chars_obj, int true_ratio=1);
+        static bool isSpace(Characters chars_obj, float true_ratio=1);
         /**
          * @brief returns booleans representing if each character is in uppercase.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -152,7 +152,7 @@ class Summary_Characters{
          * 
          * @return bool
          */
-        static bool isUpper(Characters chars_obj, int true_ratio=1);
+        static bool isUpper(Characters chars_obj, float true_ratio=1);
         /**
          * @brief returns booleans representing if each character is valid hexadecimal character.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -164,7 +164,7 @@ class Summary_Characters{
          * 
          * @return bool
          */
-        static bool isXdigit(Characters chars_obj, int true_rati=1);
+        static bool isXdigit(Characters chars_obj, float true_rati=1);
         /**
          * @brief returns booleans representing if each character is graphical character.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -176,5 +176,5 @@ class Summary_Characters{
          * 
          * @return bool
          */
-        static bool isGraph(Characters chars_obj, int true_ratio=1);
+        static bool isGraph(Characters chars_obj, float true_ratio=1);
 };

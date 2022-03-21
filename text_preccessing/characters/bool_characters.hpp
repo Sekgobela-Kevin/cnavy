@@ -2,11 +2,7 @@
 #include <vector>
 #include <functional>
 #include "characters.hpp"
-
-// collection of bools e.g {true, false, ..}
-typedef std::vector<bool> bool_chars_type;
-// collection of containing collection of bools e.g {{tru, false}, ...}
-typedef std::vector<std::vector<bool>> bool_matric_type;
+#include "bool_set.hpp"
 
 /**
  * @brief This are Characters with methods that return collection with booleans.
