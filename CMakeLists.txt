@@ -8,12 +8,12 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # add the sqlite library
-add_subdirectory("libraies/sqlite")
+add_subdirectory("libraries/sqlite")
 
 # Add executable from test.cpp
 add_executable(cnavy test.cpp)
 
-target_link_libraries(cnavy PUBLIC Sqlite3)
+target_link_libraries(cnavy PUBLIC sqlite3)
 
 # add the binary tree to the search path for include files
 # so that we will find TutorialConfig.h
