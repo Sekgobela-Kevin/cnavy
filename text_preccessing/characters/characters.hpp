@@ -51,4 +51,31 @@ class Characters : public std::string{
          * @return characters_objs_type collcetion of character objects
          */
         characters_objs_type getCharsObjs();
+        /**
+         * @brief convert characters to lowercase
+         * 
+         * @return std::string 
+         */
+        std::string toLower();
+        /**
+         * @brief convert characters to lowercase(modifies object)
+         * 
+         * @return std::string 
+         */
+        std::string toUpper();
+
+        /**
+         * @brief convert characters to lowercase(modifies object)
+         * 
+         * @return std::string 
+         */
+        std::string getLower();
+        /**
+         * @brief convert characters to lowercase
+         * 
+         * @return std::string 
+         */
+        std::string getUpper();
+
+        
 };
