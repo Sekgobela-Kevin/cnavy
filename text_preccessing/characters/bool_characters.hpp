@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 #include <functional>
+#include <unordered_map>
+#include <string>
+
 #include "characters.hpp"
 #include "bool_set.hpp"
 
@@ -13,6 +16,21 @@
  */
 class Bool_Characters{
     public:
+        /**
+         * @brief map containing text with corresponding method.
+         * e.g {{"is_alpha", is_alpha()}}
+         * 
+         */
+        static std::unordered_map<std::string, std::function<bool_chars_type(Characters)>> text_method_map;
+        /**
+         * @brief calls method in Characters object that matches string
+         * 
+         * @param chars_obj string representing method
+         * @param attr string representing method in this Class
+         * @return bool_chars_type 
+         */
+        static bool_chars_type callMethod(const Characters& chars_obj, std::string& attr);
+        
         /**
          * @brief for each element in char_objs executes func(function) and return its values
          * in a collection
@@ -113,5 +131,8 @@ class Bool_Characters{
          * @return bool_chars_type sequence of booleans.
          */
         static bool_chars_type isGraph(Characters chars_obj);
+
+        static bool_chars_type textCompare(Characters& chars_obj, Characters& chars_obj2,
+         bool ignore_case=false);
 };
 
