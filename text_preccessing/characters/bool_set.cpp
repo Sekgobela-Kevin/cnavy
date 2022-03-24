@@ -49,6 +49,10 @@ bool_chars_type Bool_Set::boolXOR(bool_chars_type collec, bool_chars_type collec
     return Bool_Set::for_each_elem(collec, collec2, [](bool a, bool b){return a ^ b;});
 }
 
+bool_chars_type Bool_Set::boolEqual(bool_chars_type collec, bool_chars_type collec2){
+    return Bool_Set::for_each_elem(collec, collec2, [](bool a, bool b){return a == b;});
+}
+
 bool_chars_type Bool_Set::boolNOT(bool_chars_type collec){
     return Bool_Set::for_each_elem(collec, std::logical_not<bool>());
 }

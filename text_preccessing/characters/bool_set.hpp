@@ -61,6 +61,14 @@ class Bool_Set{
          * @return bool_chars_type 
          */
         static bool_chars_type boolNOT(bool_chars_type bool_collection);
+        /**
+         * @brief Checks if correspoding bool values are equal in bool collections
+         * 
+         * @param bool_collection collection of booleans to perform operation
+         * @param bool_collection2 collection of booleans apply on bool_collection arg
+         * @return bool_chars_type 
+         */
+        static bool_chars_type boolEqual(bool_chars_type bool_collection, bool_chars_type bool_collection2);
 
         /**
          * @brief Tests whether all bits from bool_collection  are set or not.
