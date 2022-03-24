@@ -177,4 +177,16 @@ class Summary_Characters{
          * @return bool
          */
         static bool isGraph(Characters chars_obj, float true_ratio=1);
+        /**
+         * @brief returns booleans representing if corresponding characters in Characters objects
+         * are the same.
+         * The output depends on truth_ratio(default = 1) which means all characters are the same.
+         * 
+         * @param chars_obj object of type Characters
+         * @param chars_obj2 object of type Characters
+         * @param ignore_case true if caparison be case insensitive
+         * @return bool
+         */
+        static bool textCompare(Characters& chars_obj, Characters& chars_obj2,
+         float true_ratio=1, bool ignore_case=false);
 };

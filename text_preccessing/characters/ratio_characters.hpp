@@ -106,5 +106,16 @@ class Ratio_Characters{
          * @return float number between 0 and 1
          */
         static float isGraph(Characters chars_obj);
+        /**
+         * @brief compares text in characters object and return corresponding ratio. If ratio is 1
+         * then all characters are the same.
+         * 
+         * @param chars_obj object of type Characters
+         * @param chars_obj2 object of type Characters
+         * @param ignore_case true if caparison be case insensitive
+         * @return float number between 0 and 1
+         */
+        static float textCompare(Characters& chars_obj, Characters& chars_obj2,
+         bool ignore_case=false);
 };
 

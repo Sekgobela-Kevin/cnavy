@@ -131,7 +131,14 @@ class Bool_Characters{
          * @return bool_chars_type sequence of booleans.
          */
         static bool_chars_type isGraph(Characters chars_obj);
-
+        /**
+         * @brief compares text in characters object and return corresponding booleans
+         * 
+         * @param chars_obj object of type Characters
+         * @param chars_obj2 object of type Characters
+         * @param ignore_case true if caparison be case insensitive
+         * @return bool_chars_type 
+         */
         static bool_chars_type textCompare(Characters& chars_obj, Characters& chars_obj2,
          bool ignore_case=false);
 };

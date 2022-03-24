@@ -73,3 +73,11 @@ float Ratio_Characters::isXdigit(Characters chars_obj){
     return Ratio_Characters::getBoolRatio(bools_collection);
 }
 
+float Ratio_Characters::textCompare(Characters& chars_obj, Characters& chars_obj2,
+bool ignore_case){
+    bool_chars_type bools_collection = Bool_Characters::textCompare(chars_obj, chars_obj2, ignore_case);
+    return Ratio_Characters::getBoolRatio(bools_collection);
+}
+
+
+
