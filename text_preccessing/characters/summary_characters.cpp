@@ -71,7 +71,7 @@ bool Summary_Characters::isXdigit(Characters chars_obj, float true_ratio){
 }
 
 bool  Summary_Characters::textCompare(Characters& chars_obj, Characters& chars_obj2,
-float true_ratio=1, bool ignore_case=false){
+float true_ratio, bool ignore_case){
     float result_ratio = Ratio_Characters::textCompare(chars_obj, chars_obj2, ignore_case);
     return Summary_Characters::ratioCompare(true_ratio, result_ratio);
 }
