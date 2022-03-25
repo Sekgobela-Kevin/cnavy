@@ -33,12 +33,12 @@ void Static_Compare_Characters_Test(){
     obj_matrixs = Static_Compare_Characters::compareBoolsMatrix(obj_matrixs , obj2_matrixs);
     ratios = Static_Compare_Characters::getBoolRatios(obj_matrixs);
 
-    obj_matrixs = Static_Compare_Characters::getBoolsMatrix(*obj, *obj2, attr, true);
+    obj_matrixs = Static_Compare_Characters::getBoolsMatrix(*obj, *obj2, attr);
     ratios = Static_Compare_Characters::getBoolRatios(obj_matrixs);
 
     for (float ratio : ratios)
     {
-        cout << ratio << " ";
+        cout << ratio << " ratio";
     }
     cout << endl;
     
