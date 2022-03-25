@@ -111,9 +111,12 @@ bool_chars_type Bool_Characters::isXdigit(Characters chars_obj){
 
 bool_chars_type Bool_Characters::textCompare(Characters& chars_obj, Characters& chars_obj2,
 bool ignore_case){
+    //method is now large and needs its own file with different functions
     // variables to store strings of Characters objects
     std::string chars_objs_text;
     std::string chars_objs2_text;
+    std::string  small_text;
+    std::string  large_text;
     // retrieve lowecase version
     if(ignore_case){
         // get lowercase version of Characters objects(objects not modified)
@@ -123,24 +126,44 @@ bool ignore_case){
     else{
         // Get text as it is from Characters objects
         chars_objs_text = chars_obj.getText();
-        chars_objs_text = chars_obj2.getText();
+        chars_objs2_text = chars_obj2.getText();
     }
+
+    // stores smallest text by size
+    small_text = chars_objs_text.size() < chars_objs2_text.size() ? chars_objs_text : chars_objs2_text;
+    large_text = chars_objs_text == small_text ?  chars_objs2_text : chars_objs_text;
 
     // variable to store return value
     bool_chars_type results;
     // reserve memory to improve performance
     results.reserve(chars_objs_text.size());
-    for (size_t i = 0; i < chars_objs_text.size() || i < chars_objs2_text.size(); i++)
+    
+
+    //contains how many characters to be compared
+    int range_size;
+    if (small_text.size()<=1) range_size = 1;
+    else if (small_text.size()<=6) range_size = 2;
+    else range_size = 3;
+
+    // small named var to use in loop
+    int& rs = range_size;
+    // same as range_size but used to accomodate c++(0 based indexes)
+    int irs = range_size-1;
+
+    for (int i = irs; i < large_text.size(); i++)
     {
         // if index is out of range for one of strings then false is added to results
         // obviously theres no match for those characters involved
-        if( i >= chars_objs_text.size() || i >= chars_objs2_text.size()){
+        if( i >= small_text.size() || small_text.size()<=1 && large_text.size()>1){
             // this just trick in case Characters objects differ in length
             results.push_back(false);
         }
         else{
-            // check if characters are same in corresponding strings
-            results.push_back(chars_objs_text[i] == chars_objs2_text[i]);
+            // expect slowness for larger strings due to .find()
+            int index = large_text.find(small_text.substr(i-irs, rs));
+            bool cmp = index != std::string::npos;
+            std::cout << small_text.substr(i-irs, rs) << " " << cmp << std::endl;
+            results.push_back(cmp);
         }
     }
     return results;
