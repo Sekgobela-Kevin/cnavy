@@ -23,7 +23,7 @@ std::function<bool(bool, bool)> input_func){
     // Even if their sizes are different
     for (size_t i = 0; i < collection.size() || i < collection2.size(); i++)
     {
-        if(i > collection.size() || i > collection2.size()){
+        if(i >= collection.size() || i >= collection2.size()){
             // one of collections is out of range
             // false is pushed since no logical operation that was performed
             booleans.push_back(false);
