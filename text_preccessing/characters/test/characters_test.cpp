@@ -11,18 +11,19 @@ using namespace std;
 
 void Characters_Test(){
     clog << "Test: Started Characters Class Test using" << endl;
-    string input_string(1, 'c');
-    Characters* obj = new Characters(input_string);
+    string* input_string = new string(1000000*100, 'c');
+    Characters* obj = new Characters(*input_string);
+    
 
     // Characters implemets string
     // comaparing with string is valid
-    assert(*obj == input_string);
+    assert(*obj == *input_string);
     obj->update("str");
     assert(*obj== "str");
 
     cout << "size of characters is " <<  obj->length() << endl;
 
-
+    delete input_string;
     delete obj;
     clog << "Test: Characters Class passed tests successfully" << endl;
 }
