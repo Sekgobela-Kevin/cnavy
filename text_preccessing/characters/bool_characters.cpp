@@ -1,6 +1,10 @@
-#include "algorithm"
-#include "functional"
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <cassert>
+
 #include "bool_characters.hpp"
+
 
 
 std::unordered_map<std::string, std::function<bool_chars_type(Characters)>> 
@@ -8,7 +12,7 @@ std::unordered_map<std::string, std::function<bool_chars_type(Characters)>>
     {"is_alnum", Bool_Characters::isAlnum},
     {"is_alpha", Bool_Characters::isAlpha},
     {"is_ascii", Bool_Characters::isASCII},
-    {"is_ascii", Bool_Characters::isBlank},
+    {"is_blank", Bool_Characters::isBlank},
     {"is_cntrl", Bool_Characters::isCntrl},
     {"is_digit", Bool_Characters::isDigit},
     {"is_graph", Bool_Characters::isGraph},
@@ -16,11 +20,13 @@ std::unordered_map<std::string, std::function<bool_chars_type(Characters)>>
     {"is_print", Bool_Characters::isPrint},
     {"is_punct", Bool_Characters::isPunct},
     {"is_space", Bool_Characters::isSpace},
+    {"is_upper", Bool_Characters::isUpper},
     {"is_xdigit", Bool_Characters::isXdigit},
 };
 
 bool_chars_type Bool_Characters::callMethod(const Characters& chars_obj, std::string& attr){
-    if((bool)Bool_Characters::text_method_map.count(attr)) throw "atrr" + attr + " not found";
+    bool attr_exists = Bool_Characters::text_method_map.count(attr);
+    assert(attr_exists);
     return Bool_Characters::text_method_map[attr](chars_obj);
 }
 
@@ -110,24 +116,26 @@ bool ignore_case){
     std::string chars_objs2_text;
     // retrieve lowecase version
     if(ignore_case){
+        // get lowercase version of Characters objects(objects not modified)
         chars_objs_text = chars_obj.getLower();
         chars_objs2_text = chars_obj2.getLower();
     }
     else{
+        // Get text as it is from Characters objects
         chars_objs_text = chars_obj.getText();
         chars_objs_text = chars_obj2.getText();
     }
 
-    // retrive largest size between strings
-    int largestCount = chars_obj.size() > chars_obj2.size() ? chars_obj.size() : chars_obj2.size();
+    // variable to store return value
     bool_chars_type results;
     // reserve memory to improve performance
-    results.reserve(largestCount);
-    for (size_t i = 0; i < largestCount; i++)
+    results.reserve(chars_objs_text.size());
+    for (size_t i = 0; i < chars_objs_text.size() || i < chars_objs2_text.size(); i++)
     {
         // if index is out of range for one of strings then false is added to results
         // obviously theres no match for those characters involved
-        if( i > chars_obj.size() || i > chars_obj2.size()){
+        if( i >= chars_objs_text.size() || i >= chars_objs2_text.size()){
+            // this just trick in case Characters objects differ in length
             results.push_back(false);
         }
         else{

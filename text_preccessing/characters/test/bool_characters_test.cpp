@@ -7,19 +7,22 @@ using namespace std;
 
 /*
  g++ ..\character\character.cpp ..\character\character_compute.cpp 
- ..\character\compute_line_character.cpp 
- ..\character\line_character.cpp characters.cpp
- test\bool_characters_test.cpp
+  characters.cpp bool_characters.cpp test\bool_characters_test.cpp
 */
 
 
 void Bool_Characters_Test(){
     clog << "Test: Started Bool_Characters Class Test using" << endl;
-    string input_string(1000000, 'c');
+    string input_string(100, 'c');
+    string input_string2("is_alpha");
     Characters* obj = new Characters(input_string);
+    Characters* obj2 = new Characters("name");
+    Characters* obj3 = new Characters("names3");
     bool_chars_type results = Bool_Characters::isUpper(*obj);
-    
-    //assert(obj.boolIsPunct().size() == obj.length());
+    clog << "Bool_Characters::callMethod(*obj3, input_string2);" << endl;
+    Bool_Characters::callMethod(*obj3, input_string2);
+    Bool_Characters::textCompare(*obj2, *obj3);
+
 
     cout << "size of characters is " <<  obj->length() << endl;
     cout << "size of results is " <<  results[2] << endl;
