@@ -2,6 +2,7 @@
 #include <functional>
 #include <iostream>
 #include <cassert>
+#include <algorithm>
 
 #include "bool_characters.hpp"
 
@@ -140,10 +141,14 @@ bool ignore_case){
     
 
     //contains how many characters to be compared
+    // the more characters, the more strict it will be
     int range_size;
     if (small_text.size()<=1) range_size = 1;
-    else if (small_text.size()<=6) range_size = 2;
-    else range_size = 3;
+    else if (small_text.size()<=12) range_size = 2;
+    // things start slow-down here
+    else if (small_text.size()<=100) range_size = 3;
+    else if (small_text.size()<=1000) range_size = 4;
+    else range_size = 5;
 
     // small named var to use in loop
     int& rs = range_size;
@@ -162,9 +167,19 @@ bool ignore_case){
             // expect slowness for larger strings due to .find()
             int index = large_text.find(small_text.substr(i-irs, rs));
             bool cmp = index != std::string::npos;
-            std::cout << small_text.substr(i-irs, rs) << " " << cmp << std::endl;
+            //std::cout << small_text.substr(i-irs, rs) << " " << cmp << std::endl;
             results.push_back(cmp);
         }
+    }
+    // trick to improve results to match whats expected by Static_Bool_Characters Class
+    // This would allow results to match for compares including "is_alpha"
+    // the idea is to turn e.g 3/7 to 4/8 which is what is expected
+    // names and name should be 4/5=0.8 than 3/4=0.75
+    // this is mathematical trick done in collections of bools
+    // it if value is 0(all false or empty) or 1(all bools)
+    if(results.size() || !Bool_Set::all(results)){
+        // this will increase both total and true_ratio(true_values_count/total) by 1
+        results.push_back(true);
     }
     return results;
 }
