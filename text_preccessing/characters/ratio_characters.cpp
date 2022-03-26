@@ -5,6 +5,7 @@
 
 float Ratio_Characters::getBoolRatio(bool_chars_type bools_collection){
     float true_count = std::count(bools_collection.begin(), bools_collection.end(), true);
+    if(!bools_collection.size()) return 0.0;
     return true_count / bools_collection.size();
 }
 
