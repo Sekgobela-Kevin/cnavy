@@ -8,7 +8,6 @@ Compare_Characters::Compare_Characters(Characters& chars_obj, Characters& chars_
 std::vector<std::string> scope, bool ignore_case) : chars_obj(chars_obj), chars_obj2(chars_obj2), 
 scope(scope), ignore_case(ignore_case){
     assert(this->scope.size());
-    std::cout << "constructor called" << std::endl;
 }
 
 /*void Compare_Characters::update(){

@@ -18,10 +18,10 @@ std::function<bool(bool)> input_func){
 bool_chars_type Bool_Set::for_each_elem(bool_chars_type collection, bool_chars_type collection2,
 std::function<bool(bool, bool)> input_func, int overflow_action){
     bool_chars_type booleans;
-    booleans.reserve(collection.size());
     //stores largest collection by size
     bool_chars_type largest_collection;
     largest_collection = collection.size()>collection2.size() ? collection : collection2;
+    booleans.reserve(collection.size());
 
 
     // iteration will happen to all elements in both collection 

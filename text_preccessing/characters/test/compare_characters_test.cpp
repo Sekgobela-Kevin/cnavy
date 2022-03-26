@@ -23,7 +23,7 @@ void Compare_Characters_Test(){
     cout << "Enter another text: ";
     cin >> obj2_input_string;
 
-    vector<string> attr = {"chars"};
+    vector<string> attr = {"is_digit"};
     Characters* obj = new Characters(obj_input_string);
     Characters* obj2 = new Characters(obj2_input_string);
 
