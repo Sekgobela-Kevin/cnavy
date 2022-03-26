@@ -24,11 +24,14 @@ class Bool_Set{
          * 
          * @param collection collection of booleans
          * @param collection2 collection of booleans
-         * @param input_func funtion to call on each element
+         * @param input_func funtion to call on each elemen
+         * @param overflow_action spacifies what to do when collectons differ in size.
+         * 0 means ignore, 1 means add false and +2 means add value to results from largest(size)
+         * collection.
          * @return bool_chars_type 
          */
         static bool_chars_type for_each_elem(bool_chars_type collection,  bool_chars_type collection2,
-            std::function<bool(bool, bool)> input_func);
+            std::function<bool(bool, bool)> input_func, int overflow_action=0);
         /**
          * @brief Performs bitwise AND operation on bool_collection
          * 
