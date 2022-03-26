@@ -45,11 +45,12 @@ bool_matric_type& bools_matrix2, std::function<bool_chars_type(bool_chars_type, 
 }
 
 bool_chars_type Static_Compare_Characters::compareBools(bool_chars_type& collection, bool_chars_type& collection2){
-    // checks if bools are equal(logical AND wont work here)
-    // this wont be as expected for characters of different length
-    // e.g "names" and "2names" would be different due to mapping of wrong bools(from chars)
-    // to handle that, change this funtion to handle it, at moment it does not check mapping
-    return Bool_Set::boolEqual(collection, collection2);
+    // Use logical AND to compare
+    // Overflowing booleans get values from largest collection
+    // [true, false] vs [true, true, true] output: [true, false, true]
+    // Booleans without buddies get copied to results
+    // That could changed by changing overflow_action arg of for_each_elem
+    return Bool_Set::for_each_elem(collection, collection2, [](bool a, bool b){return a&&b;}, 2);
 }
 
 
