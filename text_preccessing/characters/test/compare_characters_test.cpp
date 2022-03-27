@@ -23,7 +23,7 @@ void Compare_Characters_Test(){
     cout << "Enter another text: ";
     cin >> obj2_input_string;
 
-    vector<string> attr = {"is_digit"};
+    vector<string> attr = {"chars", "is_digit", "is_alpha"};
     Characters* obj = new Characters(obj_input_string);
     Characters* obj2 = new Characters(obj2_input_string);
 
@@ -41,13 +41,13 @@ void Compare_Characters_Test(){
 
     for (float ratio : ratios)
     {
-        cout << ratio << " ratio";
+        cout << ratio << " ";
     }
     cout << endl;
     
 
     float final_ratio = Static_Compare_Characters::getFinalRatio(ratios);
-    cout << final_ratio << endl;// 0.8
+    cout << final_ratio << " Final Ratio" << endl;// 0.8
     
 
     clog << "Test: Compare_Characters Class passed tests successfully" << endl;

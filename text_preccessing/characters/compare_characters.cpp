@@ -3,7 +3,6 @@
 #include <cassert>
 #include <iostream>
 
-// first use of initialise lists(C++ has lot of syntax than C)
 Compare_Characters::Compare_Characters(Characters& chars_obj, Characters& chars_obj2,
 std::vector<std::string> scope, bool ignore_case) : chars_obj(chars_obj), chars_obj2(chars_obj2), 
 scope(scope), ignore_case(ignore_case){
