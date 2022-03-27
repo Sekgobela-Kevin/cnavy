@@ -98,58 +98,54 @@ Characters_Token::Characters_Token(Characters& chars_obj) : chars_obj(chars_obj)
 };
 
 
-bool Summary_Characters::ratioCompare(float true_ratio, float result_ratio){
-    return  result_ratio >= true_ratio;
-}
-
-bool Characters_Token::isAlnum(float true_ratio){
+bool Characters_Token::isAlnum(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_alpha);
 }
 
-bool Characters_Token::isAlpha(float true_ratio){
+bool Characters_Token::isAlpha(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_alpha);
 }
 
-bool Characters_Token::isAscii(float true_ratio){
+bool Characters_Token::isAscii(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_ascii);
 }
 
-bool Characters_Token::isBlank(float true_ratio){
+bool Characters_Token::isBlank(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_blank);
 }
 
-bool Characters_Token::isCntrl(float true_ratio){
+bool Characters_Token::isCntrl(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_cntrl);
 }
 
-bool Characters_Token::isDigit(float true_ratio){
+bool Characters_Token::isDigit(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_digit);
 }
 
-bool Characters_Token::isGraph(float true_ratio){
+bool Characters_Token::isGraph(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_graph);
 }
 
-bool Characters_Token::isLower(float true_ratio){
+bool Characters_Token::isLower(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_lower);
 }
 
-bool Characters_Token::isPrint(float true_ratio){
+bool Characters_Token::isPrint(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_print);
 }
 
-bool Characters_Token::isPunct(float true_ratio){
+bool Characters_Token::isPunct(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_punct);
 }
 
-bool Characters_Token::isSpace(float true_ratio){
+bool Characters_Token::isSpace(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_space);
 }
 
-bool Characters_Token::isUpper(float true_ratio){
+bool Characters_Token::isUpper(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_upper);
 }
 
-bool Characters_Token::isXdigit(float true_ratio){;
+bool Characters_Token::isXdigit(float true_ratio) const{;
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_xdigit);
 }

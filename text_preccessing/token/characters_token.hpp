@@ -1,10 +1,10 @@
 #pragma once
 
-#include "characters.hpp"
-#include "bool_characters.hpp"
-#include "ratio_characters.hpp"
-#include "summary_characters.hpp"
-#include "compare_characters.hpp"
+#include "..\characters\characters.hpp"
+#include "..\characters\bool_characters.hpp"
+#include "..\characters\ratio_characters.hpp"
+#include "..\characters\summary_characters.hpp"
+#include "..\characters\compare_characters.hpp"
 
 #include <string>
 
@@ -16,7 +16,7 @@
  * object like index, spans, etc.
  * 
  */
-class Characters_Token : public Characters{
+class Characters_Token{
     public:
         // bool characters
         // Each boolean value represent state of character in that pos
@@ -143,7 +143,7 @@ class Characters_Token : public Characters{
          * 
          * @return bool
          */
-        bool isAscii(float true_ratio=1);
+        bool isAscii(float true_ratio=1) const;
         /**
          * @brief returns booleans representing if each character is alphanumeric.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -154,7 +154,7 @@ class Characters_Token : public Characters{
          * 
          * @return bool
          */
-        bool isAlnum(float true_ratio=1);
+        bool isAlnum(float true_ratio=1) const;
         /**
          * @brief returns booleans representing if each character is alphabetic.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -165,7 +165,7 @@ class Characters_Token : public Characters{
          * 
          * @return bool
          */
-        bool isAlpha(float true_ratio=1);
+        bool isAlpha(float true_ratio=1) const;
         /**
          * @brief returns booleans representing if each character is blank character.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -176,7 +176,7 @@ class Characters_Token : public Characters{
          * 
          * @return bool
          */
-        bool isBlank(float true_ratio=1);
+        bool isBlank(float true_ratio=1) const;
         /**
          * @brief returns booleans representing if each character is control character.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -187,7 +187,7 @@ class Characters_Token : public Characters{
          * 
          * @return bool
          */
-        bool isCntrl(float true_ratio=1);
+        bool isCntrl(float true_ratio=1) const;
         /**
          * @brief returns booleans representing if each character is digit.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -198,7 +198,7 @@ class Characters_Token : public Characters{
          * 
          * @return bool
          */
-        bool isDigit(float true_ratio=1);
+        bool isDigit(float true_ratio=1) const;
         /**
          * @brief returns booleans representing if each character is in lowercase.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -209,7 +209,7 @@ class Characters_Token : public Characters{
          * 
          * @return bool
          */
-        bool isLower(float true_ratio=1);
+        bool isLower(float true_ratio=1) const;
         /**
          * @brief returns booleans representing if each character is printable.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -220,7 +220,7 @@ class Characters_Token : public Characters{
          * 
          * @return bool
          */
-        bool isPrint(float true_ratio=1);
+        bool isPrint(float true_ratio=1) const;
         /**
          * @brief returns booleans representing if each character is punctuation.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -231,7 +231,7 @@ class Characters_Token : public Characters{
          * 
          * @return bool
          */
-        bool isPunct(float true_ratio=1);
+        bool isPunct(float true_ratio=1) const;
         /**
          * @brief returns booleans representing if each character is space character.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -242,7 +242,7 @@ class Characters_Token : public Characters{
          * 
          * @return bool
          */
-        bool isSpace(float true_ratio=1);
+        bool isSpace(float true_ratio=1) const;
         /**
          * @brief returns booleans representing if each character is in uppercase.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -253,7 +253,7 @@ class Characters_Token : public Characters{
          * 
          * @return bool
          */
-        bool isUpper(float true_ratio=1);
+        bool isUpper(float true_ratio=1) const;
         /**
          * @brief returns booleans representing if each character is valid hexadecimal character.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -264,7 +264,7 @@ class Characters_Token : public Characters{
          * 
          * @return bool
          */
-        bool isXdigit(float true_rati=1);
+        bool isXdigit(float true_rati=1) const;
         /**
          * @brief returns booleans representing if each character is graphical character.
          * The output depends on truth_ratio(default = 1) which means each character should
@@ -275,5 +275,5 @@ class Characters_Token : public Characters{
          * 
          * @return bool
          */
-        bool isGraph(float true_ratio=1);
+        bool isGraph(float true_ratio=1) const;
 };
