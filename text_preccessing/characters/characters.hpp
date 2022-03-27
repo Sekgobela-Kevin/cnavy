@@ -30,6 +30,11 @@ class Characters : public std::string{
          * @param input_text string to be represented
          */
         Characters(std::string input_text);
+        /**
+         * @brief Construct a new Characters object
+         * 
+         */
+        Characters();
         
         /**
          * @brief update data about object with new calculated data from input_text.
