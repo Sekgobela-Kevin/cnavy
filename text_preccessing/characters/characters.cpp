@@ -8,7 +8,7 @@ Characters::Characters(std::string input_text) : std::string(input_text){
     this->input_string = input_text;
     size_t input_size = input_string.length();
     this->characters_objs.reserve(input_size);
-    for (wchar_t char_ : input_string)
+    for (char_type char_ : input_string)
     {
         this->characters_objs.push_back(character_type(char_));
     }
@@ -24,7 +24,7 @@ void Characters::update(std::string input_text){
 
     if(this->characters_objs.size()) this->characters_objs.clear();
     this->characters_objs.reserve(input_size);
-    for (wchar_t char_ : input_string)
+    for (char_type char_ : input_string)
     {
         character_type char_obj(char_);
         //char_obj.updateAttrs(char_obj.getCurrentChar());
