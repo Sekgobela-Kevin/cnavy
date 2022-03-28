@@ -19,14 +19,16 @@ void Characters::update(std::string input_text){
     size_t input_size = input_string.length();
     
     // replace contents of underlying string
-    this->resize(input_size, '?');
+    this->resize(input_size);
     this->replace(0, input_size, input_text);
 
     if(this->characters_objs.size()) this->characters_objs.clear();
     this->characters_objs.reserve(input_size);
     for (wchar_t char_ : input_string)
     {
-        this->characters_objs.push_back(character_type(char_));
+        character_type char_obj(char_);
+        //char_obj.updateAttrs(char_obj.getCurrentChar());
+        this->characters_objs.push_back(char_obj);
     }
 }
 
