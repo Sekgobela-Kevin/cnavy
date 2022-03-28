@@ -6,7 +6,7 @@ using namespace std;
 
 /*
  g++ ..\character\character.cpp ..\character\character_compute.cpp 
- characters.cpp bool_characters.cpp ratio_characters.cpp 
+ characters.cpp bool_set.cpp bool_characters.cpp ratio_characters.cpp 
  summary_characters.cpp test\summary_characters_test.cpp 
 */
 

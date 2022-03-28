@@ -19,9 +19,9 @@ void Character_Test(){
     obj.setCurrentChar('@', true);
     assert(obj.getCurrentChar() == '@');
 
-    assert(obj.isASCII());
+    assert(obj.isascii());
     obj.setCurrentChar('@', true);
-    assert(obj.isASCII());
+    assert(obj.isascii());
     obj.setCurrentChar('\t', true);
 
     assert(!obj.isalnum());

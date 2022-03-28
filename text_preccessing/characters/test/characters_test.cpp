@@ -11,14 +11,14 @@ using namespace std;
 
 void Characters_Test(){
     clog << "Test: Started Characters Class Test using" << endl;
-    string* input_string = new string(10, 'c');
+    string* input_string = new string(10000000, 'c');
     Characters* obj = new Characters(*input_string);
     
 
     // Characters implemets string
     // comaparing with string is valid
     assert(*obj == *input_string);
-    cout << obj->getText() << endl;
+    //cout << obj->getText() << endl;
     assert(obj->getText() == *input_string);
     obj->update("str");
     assert(*obj== "str");
