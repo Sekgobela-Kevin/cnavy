@@ -2,11 +2,12 @@
 
 
 Character::Character(char_type input_char){
-    this->current_char = input_char;
-    //this->updateAttrs(input_char);
+    this->updateAttrs(input_char);
 }
 
 void Character::updateAttrs(char_type input_char){
+    this->current_char = input_char;
+
     this->is_ascii = Character_Compute::computeIsAscii(input_char);
     this->is_alnum = Character_Compute::computeIsAlnum(input_char);
     this->is_alpha = Character_Compute::computeIsAlpha(input_char);
@@ -26,7 +27,6 @@ void Character::updateAttrs(char_type input_char){
 }
 
 void Character::setCurrentChar(char_type input_char, bool update_atrr){
-    this->current_char = input_char;
     if(update_atrr){
         this->updateAttrs(this->current_char);
     }
