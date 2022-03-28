@@ -56,7 +56,7 @@ bool_chars_type Bool_Characters::isAlpha(Characters chars_obj){
 
 bool_chars_type Bool_Characters::isASCII(Characters chars_obj){
     characters_objs_type chars_objs = chars_obj.getCharsObjs();
-    return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.isASCII();});
+    return Bool_Characters::for_each_elem(chars_objs, [](character_type obj){ return obj.isascii();});
 }
 
 bool_chars_type Bool_Characters::isBlank(Characters chars_obj){

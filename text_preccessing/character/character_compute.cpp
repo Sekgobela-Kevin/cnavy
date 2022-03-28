@@ -3,7 +3,7 @@
 #include "character.hpp"
 
 
-bool Character_Compute::computeIsASCII(char_type input_char){
+bool Character_Compute::computeIsAscii(char_type input_char){
     // ANSCII characters are 7 bit ==> 2^7 ==> 128(max value)
     return static_cast<unsigned char>(input_char) < 128;
 }
