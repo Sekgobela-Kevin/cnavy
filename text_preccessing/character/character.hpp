@@ -10,13 +10,13 @@ typedef char char_type;
 class Character_Compute{
     public:
         /**
-         * @brief computes if character is ASCII
+         * @brief computes if character is ascii
          * 
          * @param input_char 
          * @return true 
          * @return false 
          */
-        static bool computeIsASCII(char_type input_char);
+        static bool computeIsAscii(char_type input_char);
         /**
          * @brief computes if character is alpha numeric
          * 
@@ -158,7 +158,24 @@ class Character{
          * 
          */
         char_type current_char;
+        bool is_ascii;
+        bool is_alnum;
+        bool is_alpha;
+        bool is_blank;
+        bool is_cntrl;
+        bool is_digit;
+        bool is_lower;
+        bool is_print;
+        bool is_punct;
+        bool is_space;
+        bool is_upper;
+        bool is_xdigit;
+        bool is_graph;
 
+        char_type lower_char;
+        char_type upper_char;
+    
+    public:
         /**
          * @brief update attributes for character in case character was changed
          * @param input_char
@@ -193,6 +210,12 @@ class Character{
          * @return false 
          */
         bool isalpha();
+        /**
+         * @brief sets character as alphabetic
+         * 
+         * @param value 
+         */
+        void isalpha(bool value);
 
         /**
          * @brief checks if character is used to seperate words(e.g default: space and hrizontal tab)
@@ -201,6 +224,12 @@ class Character{
          * @return false 
          */
         bool isblank();
+        /**
+         * @brief set chararacter as blank character
+         * 
+         * @param value 
+         */
+        void isblank(bool value);
 
         /**
          * @brief checks if character is control character
@@ -209,6 +238,12 @@ class Character{
          * @return false 
          */
         bool iscntrl();
+        /**
+         * @brief set character as control character
+         * 
+         * @param value 
+         */
+        void iscntrl(bool value);
 
         /**
          * @brief checks if character is digit
@@ -217,6 +252,12 @@ class Character{
          * @return false 
          */
         bool isdigit();
+        /**
+         * @brief set character as digit
+         * 
+         * @param value 
+         */
+        void isdigit(bool value);
 
         /**
          * @brief checks if character is in lowercase
@@ -225,6 +266,12 @@ class Character{
          * @return false 
          */
         bool islower();
+        /**
+         * @brief set chracter as lowercase
+         * 
+         * @param value 
+         */
+        void islower(bool value);
 
         /**
          * @brief checks if character is printable
@@ -233,6 +280,12 @@ class Character{
          * @return false 
          */
         bool isprint();
+        /**
+         * @brief set chracter as printable
+         * 
+         * @param value 
+         */
+        void isprint(bool value);
 
         /**
          * @brief checks if character is punctuation
@@ -241,6 +294,12 @@ class Character{
          * @return false 
          */
         bool ispunct();
+        /**
+         * @brief set chracter as puctuation character
+         * 
+         * @param value 
+         */
+        void ispunct(bool value);
 
         /**
          * @brief checks if character is white space
@@ -249,6 +308,12 @@ class Character{
          * @return false 
          */
         bool isspace();
+        /**
+         * @brief set chracter as space character
+         * 
+         * @param value 
+         */
+        void isspace(bool value);
 
         /**
          * @brief checks if charcter is in uppercase
@@ -257,6 +322,12 @@ class Character{
          * @return false 
          */
         bool isupper();
+        /**
+         * @brief set chracter as uppercase
+         * 
+         * @param value 
+         */
+        void isupper(bool value);
 
         /**
          * @brief checks if chraracter is represented as hexadecimal digit(0-9, a-f, A-F)
@@ -265,6 +336,12 @@ class Character{
          * @return false 
          */
         bool isxdigit();
+        /**
+         * @brief set chracter as hexadecimal digit
+         * 
+         * @param value 
+         */
+        void isxdigit(bool value);
 
         /**
          * @brief checks character is graphical(Alphanumeric and Punctuation characters)
@@ -273,14 +350,26 @@ class Character{
          * @return false 
          */
         bool isgraph();
+        /**
+         * @brief set chracter as graphical character
+         * 
+         * @param value 
+         */
+        void isgraph(bool value);
 
         /**
-         * @brief checks if character is part ASCII character sets
+         * @brief checks if character is part ascii character sets
          * 
          * @return true 
          * @return false 
          */
-        bool isASCII();
+        bool isascii();
+        /**
+         * @brief set character as part of ascii character sets
+         * 
+         * @param value
+         */
+        void isascii(bool value);
 
         /**
          * @brief converts stored character to lowercase
@@ -288,12 +377,22 @@ class Character{
          * @return int 
          */
         char_type tolower();
+        /**
+         * @brief set lowercase version of character
+         * 
+         */
+        void tolower(char_type character);
 
         /**
          * @brief converts stored character to uppercase
          * 
          */
         char_type toupper();
+        /**
+         * @brief set uppercase version of character
+         * 
+         */
+        void toupper(char_type character);
 
         /**
          * @brief Sets attractribute containing the character
