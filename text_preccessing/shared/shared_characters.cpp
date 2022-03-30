@@ -71,8 +71,6 @@ std::string Shared_Characters::unique(std::string input_string){
     for( unsigned i = 0; i < size; ++i ) chars_set.insert( input_string[i] );
     input_string.assign(chars_set.begin(), chars_set.end());
     return input_string;
-
-
 }
 
 
