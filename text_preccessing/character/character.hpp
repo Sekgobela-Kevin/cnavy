@@ -152,12 +152,12 @@ class Character_Compute{
  * 
  */
 class Character{
-    protected:
+    public:
         /**
          * @brief containes the character represented by Character object
          * 
          */
-        char_type current_char;
+        char_type char_;
         bool is_ascii;
         bool is_alnum;
         bool is_alpha;
