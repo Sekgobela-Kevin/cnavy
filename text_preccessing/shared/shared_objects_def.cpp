@@ -87,6 +87,11 @@ bool Shared_Objects<key_t, val_t>::empty(){
 }
 
 template<class key_t, class val_t>
+val_t& Shared_Objects<key_t, val_t>::get(key_t key){
+    return this->shared_map.at(key);
+}
+
+template<class key_t, class val_t>
 template<typename Iterator>
 std::set<key_t> Shared_Objects<key_t, val_t>::unique(Iterator begin, Iterator end){
     size_t size = std::distance(begin,end);

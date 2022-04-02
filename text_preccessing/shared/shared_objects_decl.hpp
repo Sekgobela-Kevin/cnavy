@@ -15,7 +15,7 @@ template<class key_t, class val_t> class Shared_Objects{
          * @brief key value map with key being character and value being Character object
          * 
          */
-        std::unordered_multimap<key_t, val_t> shared_map;
+        std::unordered_map<key_t, val_t> shared_map;
 
     public:
         /**
@@ -131,4 +131,12 @@ template<class key_t, class val_t> class Shared_Objects{
          */
         template<typename Iterator>
         std::set<key_t> unique(Iterator begin, Iterator end);
+
+        /**
+         * @brief get object corresponding with key
+         * 
+         * @param key 
+         * @return val_t 
+         */
+        val_t& get(key_t key);
 };
