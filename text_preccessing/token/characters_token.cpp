@@ -1,6 +1,9 @@
 #include "characters_token.hpp"
 
-Characters_Token::Characters_Token(Characters& chars_obj) : chars_obj(chars_obj){
+void Characters_Token::setAttrs(Characters& chars_obj){
+        // store reference to Characters object(not used)
+        // maybe it may be important
+        this->chars_obj = chars_obj;
 
         // booleans representing if corresponding character is alphanumeric
         this->bool_is_alnum = Bool_Characters::isAlnum(chars_obj);
@@ -61,31 +64,31 @@ Characters_Token::Characters_Token(Characters& chars_obj) : chars_obj(chars_obj)
         // summary characters(using ratio of 1)
 
         // checks if token is alphanumeric
-        this->is_alnum;
+        this->is_alnum = this->isAlnum();
         // checks if token is alphabetic
-        this->is_alpha;
+        this->is_alpha = this->isAlpha();
         // checks if token is ascii
-        this->is_ascii;
+        this->is_ascii = this->isAscii();
         // checks if token is blank
-        this->is_blank;
+        this->is_blank = this->isBlank();
         // checks is made of control characters
-        this->is_cntrl;
+        this->is_cntrl = this->isCntrl();
         // checks if token is digit
-        this->is_digit;
+        this->is_digit = this->isDigit();
         // checks if token has all characters being graphical characters
-        this->is_graph;
+        this->is_graph = this->isGraph();
         // checks if token is in lowercase
-        this->is_lower;
+        this->is_lower = this->isLower();
         // checks if token has all characters being printable
-        this->is_print;
+        this->is_print = this->isPrint();
         // checks if token has all characters being punctuations
-        this->is_punct;
+        this->is_punct = this->isPunct();
         // checks if token all characters are space character
-        this->is_space;
+        this->is_space = this->isSpace();
         // checks if token his in uppercase
-        this->is_upper;
+        this->is_upper = this->isUpper();
         // checks if token has all characters are hexadecimal digits
-        this->is_xdigit;
+        this->is_xdigit = this->isXdigit();
 
         // token text
         this->text = chars_obj.getText();   
@@ -95,7 +98,17 @@ Characters_Token::Characters_Token(Characters& chars_obj) : chars_obj(chars_obj)
         this->upper = chars_obj.getUpper();
         // length of token
         this->length = text.length();   
+}
+
+Characters_Token::Characters_Token(Characters chars_obj){
+    this->setAttrs(chars_obj);
 };
+
+Characters_Token::Characters_Token(std::string& input_text, Shared_Objects<std::string, 
+Characters>& shared_chars_objs){
+    shared_chars_objs.add(input_text);
+    this->setAttrs(shared_chars_objs.get(input_text));
+}
 
 
 bool Characters_Token::isAlnum(float true_ratio) const{

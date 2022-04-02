@@ -6,6 +6,8 @@
 #include "..\characters\summary_characters.hpp"
 #include "..\characters\compare_characters.hpp"
 
+#include "../shared/shared_objects.hpp"
+
 #include <string>
 
 /**
@@ -116,7 +118,7 @@ class Characters_Token{
         int length;
 
     public:
-        Characters& chars_obj;
+        Characters chars_obj;
 
     public:
         /**
@@ -124,7 +126,21 @@ class Characters_Token{
          * 
          * @param chars_obj Characters object
          */
-        Characters_Token(Characters& chars_obj);
+        Characters_Token(Characters chars_obj);
+        /**
+         * @brief Construct a new Characters_Token object
+         * 
+         * @param input_text 
+         * @param shared_char_objs 
+         */
+        Characters_Token(std::string& input_text, Shared_Objects<std::string, Characters>& shared_char_objs);
+        /**
+         * @brief sets attributes of of object from Characters object
+         * 
+         * @param chars_obj 
+         * @return Characters 
+         */
+        void setAttrs(Characters& chars_obj);
         /**
          * @brief Construct a new Characters_Token object
          * 
