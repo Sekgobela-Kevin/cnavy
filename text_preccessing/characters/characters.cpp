@@ -14,6 +14,12 @@ Characters::Characters(std::string input_text) : std::string(input_text){
     }
 }
 
+Characters::Characters(){
+    // included just to fix bug undefined reference to `Characters::Characters()'
+    // it really fixed the bug, I dont know why default constructor is called when
+    // using referenced to object
+}
+
 void Characters::update(std::string input_text){
     this->input_string = input_text;
     size_t input_size = input_string.length();
