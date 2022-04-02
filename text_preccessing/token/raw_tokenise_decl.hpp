@@ -137,6 +137,4 @@ template<class char_class, class chars_class> class Raw_Tokenise{
          * @return chars_coll_t 
          */
         chars_coll_t createCharsObjs(chars_coll_t char_objects, std::function<bool(char_class)> func);
-
-        
 };
