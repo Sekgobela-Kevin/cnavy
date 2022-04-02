@@ -1,3 +1,5 @@
+#pragma once
+#include "shared_objects_def.cpp"
 // this is .cpp source file containing templates definitions
 // shared_objects.hpp is already included in shared_objects.cpp
 // this may bloat the application depending on compiler optimisation
@@ -11,5 +13,5 @@
 // get used during initilisation of template
 // no need compile shared_objects_def.cpp as its already included in shared_objects.hpp
 
-// this file contains templates definitions
-#include "shared_objects_def.cpp"
+// "shared_objects_def.cpp" file contains templates definitions
+
