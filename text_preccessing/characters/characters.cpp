@@ -4,14 +4,8 @@
 #include "characters.hpp"
 
 
-Characters::Characters(std::string input_text) : std::string(input_text){
-    this->input_string = input_text;
-    size_t input_size = input_string.length();
-    this->characters_objs.reserve(input_size);
-    for (char_type char_ : input_string)
-    {
-        this->characters_objs.push_back(character_type(char_));
-    }
+Characters::Characters(std::string input_text){
+    this->update(input_text);
 }
 
 Characters::Characters(){
@@ -23,10 +17,6 @@ Characters::Characters(){
 void Characters::update(std::string input_text){
     this->input_string = input_text;
     size_t input_size = input_string.length();
-    
-    // replace contents of underlying string
-    this->resize(input_size);
-    this->replace(0, input_size, input_text);
 
     if(this->characters_objs.size()) this->characters_objs.clear();
     this->characters_objs.reserve(input_size);
@@ -78,6 +68,14 @@ std::string Characters::toLower(){
     return this->getText();
 }
 
+size_t Characters::size(){
+    return this->characters_objs.size();
+}
+
+size_t Characters::length(){
+    return this->characters_objs.size();
+}
+
 
 std::string Characters::toUpper(){
     std::string text = this->getUpper();
@@ -85,3 +83,30 @@ std::string Characters::toUpper(){
     this->update(text);
     return this->getText();
 }
+
+
+// iterator methods
+characters_objs_type::iterator Characters::begin() { return this->characters_objs.begin(); }
+characters_objs_type::iterator Characters::end() { return this->characters_objs.end(); }
+characters_objs_type::const_iterator Characters::cbegin() const { return this->characters_objs.begin(); }
+characters_objs_type::const_iterator Characters::cend() const { return this->characters_objs.end(); }
+characters_objs_type::const_iterator Characters::begin() const { return this->characters_objs.begin(); }
+characters_objs_type::const_iterator Characters::end() const { return this->characters_objs.end(); }
+
+
+// method overiding
+Character& Characters::operator[](size_t i) { return this->characters_objs[i]; }
+Characters Characters::operator+(Characters& other){
+    std::string concat_text = this->getText() + other.getText();
+    return Characters(concat_text);
+}
+// change this in future and make copare based on characters objects than string
+bool Characters::operator==(std::string other){ return this->getText()==other;}
+bool Characters::operator==(const char* other){ return this->getText() == other;}
+bool Characters::operator==(Characters& other){ return this->getText()==other.getText();};
+
+std::ostream& operator<<(std::ostream& out_stream, Characters& chars_obj){
+    out_stream << chars_obj.getText();
+    return out_stream;
+}
+

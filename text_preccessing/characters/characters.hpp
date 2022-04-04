@@ -1,6 +1,7 @@
 #pragma once
-#include "string"
+#include <string>
 #include <vector>
+#include <iostream>
 #include "..\character\character.hpp"
 
 /**
@@ -17,7 +18,7 @@ typedef std::vector<character_type> characters_objs_type;
  * This Class provide base methods shared by all Characters Classes.
  * 
  */
-class Characters : public std::string{
+class Characters{
     protected:
         //**
         characters_objs_type characters_objs;
@@ -82,5 +83,38 @@ class Characters : public std::string{
          */
         std::string getUpper();
 
-        
+        // string like methods
+        /**
+         * @brief returns size of object
+         * 
+         * @return size_t
+         */
+        size_t size();
+        /**
+         * @brief returns length of object(same as size())
+         * 
+         * @return size_t
+         */
+        size_t length();
+
+
+
+        // iterator methods
+        /* https://stackoverflow.com/questions/8164567/
+        how-to-make-my-custom-type-to-work-with-range-based-for-loops
+        */
+        characters_objs_type::iterator begin();
+        characters_objs_type::iterator end();
+        characters_objs_type::const_iterator cbegin() const;
+        characters_objs_type::const_iterator cend() const;
+        characters_objs_type::const_iterator begin() const;
+        characters_objs_type::const_iterator end() const;
+
+        // operator overiding
+        Character& operator[](size_t index);
+        Characters operator+(Characters& other);
+        bool operator==(std::string other);
+        bool operator==(const char* other);
+        bool operator==(Characters& other);
+        friend std::ostream& operator<<(std::ostream& out_stream, Characters& chars_obj);
 };
