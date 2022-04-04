@@ -11,9 +11,22 @@ using namespace std;
 
 void Characters_Test(){
     clog << "Test: Started Characters Class Test using" << endl;
-    string* input_string = new string(10000000, 'c');
+    string* input_string = new string(5, 'a');
+    string* input_string2 = new string(5, '1');
     Characters* obj = new Characters(*input_string);
+    Characters* obj2 = new Characters(*input_string2);
     
+    // test overloaded operators
+    Characters new_chars_obj = *obj + *obj2;
+    cout << "print chars_obj: " << new_chars_obj << endl;
+
+    cout << "print character objs throug for each" << endl;
+    for(auto char_obj: new_chars_obj) cout << char_obj;
+    cout << endl;
+
+    // check if + operator works
+    assert(new_chars_obj.getText() == *input_string+*input_string2);
+
 
     // Characters implemets string
     // comaparing with string is valid
