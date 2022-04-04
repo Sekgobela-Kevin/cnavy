@@ -6,14 +6,14 @@
 
 #include "..\..\character\character.hpp"
 #include "..\..\characters\characters.hpp"
-#include "..\characters_token.hpp"
+#include "..\raw_token.hpp"
 #include "..\raw_tokenise.hpp"
 using namespace std;
 
 /*
  g++ ..\character\character.cpp ..\character\character_compute.cpp 
  characters.cpp  bool_set.cpp bool_characters.cpp ratio_characters.cpp 
- summary_characters.cpp ..\token\characters_token.cpp 
+ summary_characters.cpp ..\token\raw_token.cpp 
  ..\token\test\raw_tokenise_test.cpp 
 */
 
@@ -23,9 +23,9 @@ void Raw_Tokenise_Test(){
     string* input_string = new std::string("programming is power on power");
 
     Shared_Objects<char_type, Character> shared_char;
-    Shared_Objects<std::string, Characters_Token> shared_chars;
+    Shared_Objects<std::string, Raw_Token> shared_chars;
 
-    using tokens_t = Raw_Tokenise<Character, Characters_Token>;
+    using tokens_t = Raw_Tokenise<Character, Raw_Token>;
 
     tokens_t* token = new  tokens_t(*input_string, shared_char, shared_chars);
 

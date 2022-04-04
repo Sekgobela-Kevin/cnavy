@@ -1,7 +1,7 @@
-#include "characters_token.hpp"
+#include "raw_token.hpp"
 #include "reference_token.hpp"
 
-Reference_Token::Reference_Token(Characters_Token& chars_token) :
+Reference_Token::Reference_Token(Raw_Token& chars_token) :
 
 // argumets via object initialization lists
 chars_token(chars_token),

@@ -8,7 +8,7 @@ using namespace std;
 /*
  g++ ..\character\character.cpp ..\character\character_compute.cpp 
  characters.cpp bool_set.cpp bool_characters.cpp ratio_characters.cpp 
- summary_characters.cpp ..\token\characters_token.cpp ..\token\reference_token.cpp
+ summary_characters.cpp ..\token\raw_token.cpp ..\token\reference_token.cpp
  ..\token\test\reference_token_test.cpp 
 */
 
@@ -27,7 +27,7 @@ void Reference_Token_Test(){
     Characters* chars_obj = new Characters(*input_string);
     vector<std::reference_wrapper<Reference_Token>> chars_tokens;
 
-    Characters_Token* chars_tok = new Characters_Token(*chars_obj);
+    Raw_Token* chars_tok = new Raw_Token(*chars_obj);
     Reference_Token ref_tok = Reference_Token(*chars_tok);
 
     

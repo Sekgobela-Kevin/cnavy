@@ -18,7 +18,7 @@
  * object like index, spans, etc.
  * 
  */
-class Characters_Token{
+class Raw_Token{
     public:
         // bool characters
         // Each boolean value represent state of character in that pos
@@ -130,32 +130,32 @@ class Characters_Token{
 
     public:
         /**
-         * @brief Construct a new Characters_Token object
+         * @brief Construct a new Raw_Token object
          * 
          * @param chars_obj Characters object
          */
-        Characters_Token(Characters chars_obj);
+        Raw_Token(Characters chars_obj);
         /**
-         * @brief Construct a new Characters_Token object
+         * @brief Construct a new Raw_Token object
          * 
          * @param chars_obj characters object
          * @param shared_chars_objs Shared_Objects object of character objects
          */
-        Characters_Token(Characters chars_obj, Shared_Objects<std::string, 
+        Raw_Token(Characters chars_obj, Shared_Objects<std::string, 
         Characters>& shared_chars_objs);
         /**
-         * @brief Construct a new Characters_Token object
+         * @brief Construct a new Raw_Token object
          * 
          * @param input_text 
          */
-        Characters_Token(std::string& input_text);
+        Raw_Token(std::string& input_text);
         /**
-         * @brief Construct a new Characters_Token object
+         * @brief Construct a new Raw_Token object
          * 
          * @param input_text 
          * @param shared_char_objs 
          */
-        Characters_Token(std::string& input_text, Shared_Objects<std::string, Characters>& shared_char_objs);
+        Raw_Token(std::string& input_text, Shared_Objects<std::string, Characters>& shared_char_objs);
         /**
          * @brief sets attributes of of object from Characters object
          * 
@@ -164,10 +164,10 @@ class Characters_Token{
          */
         void setAttrs(Characters& chars_obj);
         /**
-         * @brief Construct a new Characters_Token object
+         * @brief Construct a new Raw_Token object
          * 
          */
-        Characters_Token();
+        Raw_Token();
 
         // ----------Summary Characters methods-------------
 

@@ -1,8 +1,8 @@
-#include "characters_token.hpp"
+#include "raw_token.hpp"
 
-Characters_Token::shared_chars_t Characters_Token::shared_chars_objs = shared_chars_t();
+Raw_Token::shared_chars_t Raw_Token::shared_chars_objs = shared_chars_t();
 
-void Characters_Token::setAttrs(Characters& chars_obj){
+void Raw_Token::setAttrs(Characters& chars_obj){
         // store reference to Characters object(not used)
         // maybe it may be important
         this->chars_obj = &chars_obj;
@@ -102,21 +102,21 @@ void Characters_Token::setAttrs(Characters& chars_obj){
         this->length = text.length();   
 }
 
-Characters_Token::Characters_Token(Characters chars_obj){
+Raw_Token::Raw_Token(Characters chars_obj){
     std::string obj_text = chars_obj.getText();
-    Characters_Token::shared_chars_objs.add(obj_text, chars_obj);
-    Characters chars_obj_ = Characters_Token::shared_chars_objs.get(obj_text);
+    Raw_Token::shared_chars_objs.add(obj_text, chars_obj);
+    Characters chars_obj_ = Raw_Token::shared_chars_objs.get(obj_text);
     this->setAttrs(chars_obj_);
 };
 
-Characters_Token::Characters_Token(std::string& input_text){
-    Characters_Token::shared_chars_objs.add(input_text);
-    Characters chars_obj_ = Characters_Token::shared_chars_objs.get(input_text);
+Raw_Token::Raw_Token(std::string& input_text){
+    Raw_Token::shared_chars_objs.add(input_text);
+    Characters chars_obj_ = Raw_Token::shared_chars_objs.get(input_text);
     this->setAttrs(chars_obj_);
     printf("finished constr\n");
 }
 
-Characters_Token::Characters_Token(Characters chars_obj, Shared_Objects<std::string, 
+Raw_Token::Raw_Token(Characters chars_obj, Shared_Objects<std::string, 
 Characters>& shared_chars_objs){
     std::string obj_text = chars_obj.getText();
     shared_chars_objs.add(chars_obj.getText(), chars_obj);
@@ -124,7 +124,7 @@ Characters>& shared_chars_objs){
     this->setAttrs(chars_obj_);
 };
 
-Characters_Token::Characters_Token(std::string& input_text, Shared_Objects<std::string, 
+Raw_Token::Raw_Token(std::string& input_text, Shared_Objects<std::string, 
 Characters>& shared_chars_objs){
     shared_chars_objs.add(input_text);
     Characters chars_obj_ = shared_chars_objs.get(input_text);
@@ -132,54 +132,54 @@ Characters>& shared_chars_objs){
 }
 
 
-bool Characters_Token::isAlnum(float true_ratio) const{
+bool Raw_Token::isAlnum(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_alpha);
 }
 
-bool Characters_Token::isAlpha(float true_ratio) const{
+bool Raw_Token::isAlpha(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_alpha);
 }
 
-bool Characters_Token::isAscii(float true_ratio) const{
+bool Raw_Token::isAscii(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_ascii);
 }
 
-bool Characters_Token::isBlank(float true_ratio) const{
+bool Raw_Token::isBlank(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_blank);
 }
 
-bool Characters_Token::isCntrl(float true_ratio) const{
+bool Raw_Token::isCntrl(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_cntrl);
 }
 
-bool Characters_Token::isDigit(float true_ratio) const{
+bool Raw_Token::isDigit(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_digit);
 }
 
-bool Characters_Token::isGraph(float true_ratio) const{
+bool Raw_Token::isGraph(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_graph);
 }
 
-bool Characters_Token::isLower(float true_ratio) const{
+bool Raw_Token::isLower(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_lower);
 }
 
-bool Characters_Token::isPrint(float true_ratio) const{
+bool Raw_Token::isPrint(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_print);
 }
 
-bool Characters_Token::isPunct(float true_ratio) const{
+bool Raw_Token::isPunct(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_punct);
 }
 
-bool Characters_Token::isSpace(float true_ratio) const{
+bool Raw_Token::isSpace(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_space);
 }
 
-bool Characters_Token::isUpper(float true_ratio) const{
+bool Raw_Token::isUpper(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_upper);
 }
 
-bool Characters_Token::isXdigit(float true_ratio) const{;
+bool Raw_Token::isXdigit(float true_ratio) const{;
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_xdigit);
 }

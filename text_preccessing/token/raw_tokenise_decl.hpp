@@ -1,6 +1,6 @@
 #pragma once
 #include "../shared/shared_objects.hpp"
-#include "characters_token.hpp"
+#include "raw_token.hpp"
 
 #include <vector>
 

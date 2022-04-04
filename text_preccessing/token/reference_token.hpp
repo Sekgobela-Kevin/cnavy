@@ -1,5 +1,5 @@
 #pragma once
-#include "characters_token.hpp"
+#include "raw_token.hpp"
 
 #include <string>
 #include <functional>
@@ -119,16 +119,16 @@ class Reference_Token{
          * @brief Characters Token object
          * 
          */
-        const Characters_Token& chars_token;
+        const Raw_Token& chars_token;
 
 
     public:
         /**
          * @brief Construct a new Reference_Token object
          * 
-         * @param chars_token Characters_Token object
+         * @param chars_token Raw_Token object
          */
-        Reference_Token(Characters_Token& chars_token);
+        Reference_Token(Raw_Token& chars_token);
         /**
          * @brief Construct a new Reference_Token object
          * 

@@ -2,13 +2,13 @@
 #include <cassert>
 #include <string>
 #include <memory>
-#include "../characters_token.hpp"
+#include "../raw_token.hpp"
 using namespace std;
 
 /*
  g++ ..\character\character.cpp ..\character\character_compute.cpp 
  characters.cpp bool_set.cpp bool_characters.cpp ratio_characters.cpp 
- summary_characters.cpp ..\token\characters_token.cpp 
+ summary_characters.cpp ..\token\raw_token.cpp 
  ..\token\test\raw_token_test.cpp 
 */
 
@@ -25,8 +25,8 @@ void Reference_Token_Test(){
     Characters* chars_obj = new Characters(*input_string);
     clog << "Test: Created Character object" << endl;
 
-    Characters_Token* raw_tokens = new Characters_Token(*input_string);
-    clog << "Test: Created Characters_Token object" << endl;
+    Raw_Token* raw_tokens = new Raw_Token(*input_string);
+    clog << "Test: Created Raw_Token object" << endl;
  
     cout << (*raw_tokens).is_alpha << endl;
     delete input_string;
