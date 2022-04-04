@@ -144,3 +144,13 @@ char_type Character::toupper(){
 void Character::toupper(char_type character){
     this->upper_char = character;
 }
+
+
+// operators overloading
+std::ostream& operator<<(std::ostream& out_stream, Character& char_obj){
+    out_stream << char_obj.char_;
+    return out_stream;
+}
+
+bool Character::operator==(Character& other){return this->char_ == other.char_;}
+bool Character::operator==(char_type other){return this->char_ == other;}

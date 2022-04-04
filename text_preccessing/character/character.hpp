@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 typedef char char_type;
 /**
@@ -407,4 +408,10 @@ class Character{
          * @return char_type 
          */
         char_type getCurrentChar();
+
+
+        // method overloading
+        friend std::ostream& operator<<(std::ostream& out_stream, Character& char_obj);
+        bool operator==(Character& other);
+        bool operator==(char_type other);
 };
