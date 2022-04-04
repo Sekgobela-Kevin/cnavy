@@ -118,7 +118,15 @@ class Characters_Token{
         int length;
 
     public:
-        Characters chars_obj;
+        using shared_chars_t = Shared_Objects<std::string, Characters>;
+        /**
+         * @brief pointer to underlying character object
+         */
+        Characters* chars_obj = nullptr;
+        /***
+         * static shared object to underlying characters objects
+        */
+        static shared_chars_t shared_chars_objs;
 
     public:
         /**
@@ -127,6 +135,20 @@ class Characters_Token{
          * @param chars_obj Characters object
          */
         Characters_Token(Characters chars_obj);
+        /**
+         * @brief Construct a new Characters_Token object
+         * 
+         * @param chars_obj characters object
+         * @param shared_chars_objs Shared_Objects object of character objects
+         */
+        Characters_Token(Characters chars_obj, Shared_Objects<std::string, 
+        Characters>& shared_chars_objs);
+        /**
+         * @brief Construct a new Characters_Token object
+         * 
+         * @param input_text 
+         */
+        Characters_Token(std::string& input_text);
         /**
          * @brief Construct a new Characters_Token object
          * 

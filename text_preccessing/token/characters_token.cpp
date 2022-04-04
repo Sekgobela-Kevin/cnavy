@@ -1,9 +1,11 @@
 #include "characters_token.hpp"
 
+Characters_Token::shared_chars_t Characters_Token::shared_chars_objs = shared_chars_t();
+
 void Characters_Token::setAttrs(Characters& chars_obj){
         // store reference to Characters object(not used)
         // maybe it may be important
-        this->chars_obj = chars_obj;
+        this->chars_obj = &chars_obj;
 
         // booleans representing if corresponding character is alphanumeric
         this->bool_is_alnum = Bool_Characters::isAlnum(chars_obj);
@@ -101,13 +103,32 @@ void Characters_Token::setAttrs(Characters& chars_obj){
 }
 
 Characters_Token::Characters_Token(Characters chars_obj){
-    this->setAttrs(chars_obj);
+    std::string obj_text = chars_obj.getText();
+    Characters_Token::shared_chars_objs.add(obj_text, chars_obj);
+    Characters chars_obj_ = Characters_Token::shared_chars_objs.get(obj_text);
+    this->setAttrs(chars_obj_);
+};
+
+Characters_Token::Characters_Token(std::string& input_text){
+    Characters_Token::shared_chars_objs.add(input_text);
+    Characters chars_obj_ = Characters_Token::shared_chars_objs.get(input_text);
+    this->setAttrs(chars_obj_);
+    printf("finished constr\n");
+}
+
+Characters_Token::Characters_Token(Characters chars_obj, Shared_Objects<std::string, 
+Characters>& shared_chars_objs){
+    std::string obj_text = chars_obj.getText();
+    shared_chars_objs.add(chars_obj.getText(), chars_obj);
+    Characters chars_obj_ = shared_chars_objs.get(obj_text);
+    this->setAttrs(chars_obj_);
 };
 
 Characters_Token::Characters_Token(std::string& input_text, Shared_Objects<std::string, 
 Characters>& shared_chars_objs){
     shared_chars_objs.add(input_text);
-    this->setAttrs(shared_chars_objs.get(input_text));
+    Characters chars_obj_ = shared_chars_objs.get(input_text);
+    this->setAttrs(chars_obj_);
 }
 
 
