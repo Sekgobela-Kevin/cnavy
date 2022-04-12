@@ -1,8 +1,9 @@
 #include <iostream>
-#include <cassert>
 #include <string>
 #include <memory>
+
 #include "raw_token.hpp"
+#include "doctest.h"
 using namespace std;
 
 /*
@@ -12,8 +13,9 @@ using namespace std;
  ..\token\test\raw_token_test.cpp 
 */
 
+void Enable_Doctest_Raw_Token(){};
 
-void Reference_Token_Test(){
+TEST_CASE("Raw_Token"){
     clog << "Test: Started Raw_Token Class Test using" << endl;
     string* input_string = new string("token");
 
@@ -27,14 +29,16 @@ void Reference_Token_Test(){
 
     Raw_Token* raw_tokens = new Raw_Token(*input_string);
     clog << "Test: Created Raw_Token object" << endl;
- 
-    cout << (*raw_tokens).is_alpha << endl;
+
+    CHECK(raw_tokens->is_alnum);
+    CHECK(raw_tokens->is_alpha);
+    CHECK(raw_tokens->is_digit == false);
+    CHECK(raw_tokens->is_ascii);
+    CHECK(raw_tokens->is_lower);
+    CHECK(raw_tokens->is_upper == false);
+
+    // the rest are likely to be doing well
     delete input_string;
 
     clog << "Test: Raw_Token Class passed tests successfully" << endl;
-}
-
-
-int main(){
-    Reference_Token_Test();
 }

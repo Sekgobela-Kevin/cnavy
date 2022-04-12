@@ -14,5 +14,4 @@ add_library(xtesscmptlib components.cpp)
 ### include sub_directories
 target_include_directories(xtesscmptlib PUBLIC 
     "${CMAKE_CURRENT_SOURCE_DIR}/tokeniser/raw_tokeniser"
-    "${PROJECT_SOURCE_DIR}/include/cnavy/tools"
 )

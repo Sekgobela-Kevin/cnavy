@@ -18,5 +18,9 @@ add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/components")
 
 add_library(xtesslib xtess.cpp)
 
+# linking libs into xtesslib
 target_link_libraries(xtesslib PUBLIC xtesschrslib xtesscmptlib)
+
+### inter library linking
+### components depends on characters
 target_link_libraries(xtesscmptlib PUBLIC xtesschrslib)

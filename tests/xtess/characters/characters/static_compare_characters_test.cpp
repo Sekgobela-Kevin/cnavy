@@ -1,7 +1,8 @@
 #include <iostream>
-#include <cassert>
 #include <string>
-#include "..\static_compare_characters.hpp"
+
+#include "static_compare_characters.hpp"
+#include "doctest.h"
 using namespace std;
 
 /*
@@ -11,17 +12,14 @@ using namespace std;
  test\static_compare_characters_test.cpp
 */
 
-void Static_Compare_Characters_Test(){
+void Enable_Doctest_Static_Compare_Characters(){};
+
+TEST_CASE("Static_Compare_Characters"){
     clog << "Test: Started Static_Compare_Characters Class Test using" << endl;
     string input_string(4, 'c');
 
-    string obj_input_string;
-    string obj2_input_string;
-
-    cout << "Enter text: ";
-    cin >> obj_input_string;
-    cout << "Enter another text: ";
-    cin >> obj2_input_string;
+    string obj_input_string = "name";
+    string obj2_input_string = "names";
 
     vector<string> attr = {"chars"};
     Characters* obj = new Characters(obj_input_string);
@@ -45,11 +43,9 @@ void Static_Compare_Characters_Test(){
 
     float final_ratio = Static_Compare_Characters::getFinalRatio(ratios);
     cout << final_ratio << endl;// 0.8
+
+    REQUIRE(final_ratio == doctest::Approx(0.8));
     
 
     clog << "Test: Static_Compare_Characters Class passed tests successfully" << endl;
-}
-
-int main(){
-    Static_Compare_Characters_Test();
 }

@@ -1,7 +1,9 @@
 #include <iostream>
 #include <cassert>
 #include "string"
-#include "..\characters.hpp"
+
+#include "characters.hpp"
+#include "doctest.h"
 using namespace std;
 
 /*
@@ -9,7 +11,9 @@ using namespace std;
  characters.cpp test\characters_test.cpp
 */
 
-void Characters_Test(){
+void Enable_Doctest_Characters(){};
+
+TEST_CASE("Characters Class test"){
     clog << "Test: Started Characters Class Test using" << endl;
     string* input_string = new string(5, 'a');
     string* input_string2 = new string(5, '1');
@@ -25,16 +29,16 @@ void Characters_Test(){
     cout << endl;
 
     // check if + operator works
-    assert(new_chars_obj.getText() == *input_string+*input_string2);
+    CHECK(new_chars_obj.getText() == *input_string+*input_string2);
 
 
     // Characters implemets string
     // comaparing with string is valid
-    assert(*obj == *input_string);
+    CHECK(obj->getText() == *input_string);
     //cout << obj->getText() << endl;
-    assert(obj->getText() == *input_string);
+    CHECK(obj->getText() == *input_string);
     obj->update("str");
-    assert(*obj== "str");
+    CHECK(obj->getText() == "str");
 
     cout << "size of characters is " <<  obj->length() << endl;
 
@@ -43,10 +47,6 @@ void Characters_Test(){
     clog << "Test: Characters Class passed tests successfully" << endl;
 }
 
-
-int main(){
-    Characters_Test();
-}
 
 
 /*

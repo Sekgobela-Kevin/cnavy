@@ -1,6 +1,7 @@
 #include <iostream>
-#include <cassert>
-#include "..\line_character.hpp"
+
+#include "line_character.hpp"
+#include "doctest.h"
 using namespace std;
 
 /**g++ character.cpp character_compute.cpp 
@@ -9,33 +10,31 @@ using namespace std;
  * test\line_character_test.cpp
 */
 
-void Line_Character_Test(){
+void Enable_Doctest_Line_Character(){};
+
+TEST_CASE("Line_Character CLass test"){
     clog << "Test: Started Line_Character Class Test using" << endl;
     char char_ = '\n';
     Line_Character obj(char_);
-    assert(obj.isNewLineChar());
+    CHECK(obj.isNewLineChar());
     obj.setCurrentChar('\n', true);
-    assert(obj.isNewLineChar());
+    CHECK(obj.isNewLineChar());
     obj.isNewLineChar(false);
-    assert(!obj.isNewLineChar());
+    CHECK(!obj.isNewLineChar());
 
-    assert(!obj.isQuestChar());
+    CHECK(!obj.isQuestChar());
     obj.setCurrentChar('?', true);
-    assert(obj.isQuestChar());
+    CHECK(obj.isQuestChar());
     obj.isQuestChar(false);
-    assert(!obj.isQuestChar());
+    CHECK(!obj.isQuestChar());
 
-    assert(!obj.isAtLineBeg());
+    CHECK(!obj.isAtLineBeg());
     obj.isAtLineBeg(true);
-    assert(obj.isAtLineBeg());
+    CHECK(obj.isAtLineBeg());
 
-    assert(!obj.isAtLineEnd());
+    CHECK(!obj.isAtLineEnd());
     obj.isAtLineEnd(true);
-    assert(obj.isAtLineEnd());
+    CHECK(obj.isAtLineEnd());
 
     clog << "Test: Line_Character class passed tests successfully" << endl;
-}
-
-int main(){
-     Line_Character_Test();
 }

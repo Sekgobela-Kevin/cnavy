@@ -1,7 +1,8 @@
 #include <iostream>
-#include <cassert>
 #include "string"
+
 #include "bool_characters.hpp"
+#include "doctest.h"
 using namespace std;
 
 
@@ -11,7 +12,9 @@ using namespace std;
 */
 
 
-void Bool_Characters_Test(){
+void Enable_Doctest_Bool_Characters(){};
+
+TEST_CASE("Bool_Characters Class test"){
     clog << "Test: Started Bool_Characters Class Test using" << endl;
     string input_string(100, 'c');
     string input_string2("is_alpha");
@@ -29,8 +32,4 @@ void Bool_Characters_Test(){
 
     delete obj;
     clog << "Test: Bool_Characters Class passed tests successfully" << endl;
-}
-
-int main(){
-    Bool_Characters_Test();
 }

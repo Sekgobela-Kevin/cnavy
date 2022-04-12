@@ -1,7 +1,8 @@
 #include <iostream>
-#include <cassert>
 #include <string>
-#include "..\compare_characters.hpp"
+
+#include "compare_characters.hpp"
+#include "doctest.h"
 using namespace std;
 
 /*
@@ -11,19 +12,15 @@ using namespace std;
  test\compare_characters_test.cpp 
 */
 
-void Compare_Characters_Test(){
+void Enable_Doctest_Compare_Characters(){};
+
+TEST_CASE("Compare_Characters Class test"){
     clog << "Test: Started Compare_Characters Class Test using" << endl;
-    string input_string(4, 'c');
 
-    string obj_input_string;
-    string obj2_input_string;
+    string obj_input_string = "name";
+    string obj2_input_string = "names";
 
-    cout << "Enter text: ";
-    cin >> obj_input_string;
-    cout << "Enter another text: ";
-    cin >> obj2_input_string;
-
-    vector<string> attr = {"chars", "is_digit", "is_alpha"};
+    vector<string> attr = {"chars"};
     Characters* obj = new Characters(obj_input_string);
     Characters* obj2 = new Characters(obj2_input_string);
 
@@ -35,10 +32,6 @@ void Compare_Characters_Test(){
 
     ratios = cmp_obj->getRatios();
 
-
-
-
-
     for (float ratio : ratios)
     {
         cout << ratio << " ";
@@ -48,12 +41,8 @@ void Compare_Characters_Test(){
 
     float final_ratio = Static_Compare_Characters::getFinalRatio(ratios);
     cout << final_ratio << " Final Ratio" << endl;// 0.8
+    CHECK(final_ratio == doctest::Approx(0.8));
     
 
     clog << "Test: Compare_Characters Class passed tests successfully" << endl;
-}
-
-
-int main(){
-    Compare_Characters_Test();
 }

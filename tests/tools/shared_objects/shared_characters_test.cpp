@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cassert>
 #include <string>
-#include "../shared_characters.hpp"
+#include "shared_characters.hpp"
 using namespace std;
 
 /*

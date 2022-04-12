@@ -1,8 +1,8 @@
-#include <cassert>
-#include <iostream>
+#include "doctest.h"
+#include "file.hpp"
+
 #include <string>
-#include <assert.h>
-#include "../file.hpp"
+
 
 /* 
 Subclass of FIle CLass that implemets dataToText() for purpose of testing.
@@ -24,8 +24,13 @@ class File_Sample : public File{
         };
 };
 
+/* called to enable testing */
+void Enable_Doctest_Crawl_File(){
+    printf("Enable_Doctest_File()");
+};
 
-void File_Test(){
+
+TEST_CASE("crawler files test"){
     // Prepare for a test file for testing
 
     std::ofstream fs;
@@ -34,40 +39,34 @@ void File_Test(){
     fs.open (filePath);
     fs << writeData;
     fs.close();
-    
 
     // Actual testing start here
     File_Sample obj = File_Sample("something to print", filePath, true);
     string readData = obj.read(filePath);
-    assert(obj.isSourceValid(filePath));
-    assert(obj.isSourceActive(filePath));
-    assert(obj.isOpen());
-    assert(obj.isLoaded() == false);
-    assert(obj.isSourceActive(filePath));
-    assert(readData == writeData);
-    assert(obj.fetchData(filePath) == writeData);
-    assert(obj.getData()["body"] == "");
-    //assert(obj.getData() == {})
+    CHECK(obj.isSourceValid(filePath));
+    CHECK(obj.isSourceActive(filePath));
+    CHECK(obj.isOpen());
+    CHECK(obj.isLoaded() == false);
+    CHECK(obj.isSourceActive(filePath));
+    CHECK(readData == writeData);
+    CHECK(obj.fetchData(filePath) == writeData);
+    CHECK(obj.getData()["body"] == "");
+    //CHECK(obj.getData() == {})
 
     // Change state of object
-    assert(obj.requestData());
-    assert(obj.requestData() == false);
-    assert(obj.requestData(true));
-    assert(obj.isLoaded());
-    assert(obj.getData()["body"] == writeData);
-    assert(obj.getData()["type"] == "file");
-    assert(obj.getData()["source"] == filePath);
+    CHECK(obj.requestData());
+    CHECK(obj.requestData() == false);
+    CHECK(obj.requestData(true));
+    CHECK(obj.isLoaded());
+    CHECK(obj.getData()["body"] == writeData);
+    CHECK(obj.getData()["type"] == "file");
+    CHECK(obj.getData()["source"] == filePath);
 
 
     
     // files closing test
     obj.close();
     obj.remove();
-    assert(obj.isSourceActive(filePath) == false);
-    assert(obj.isOpen() == false);
-    clog << "File class passed tests successfully";
-}
-
-int main(){
-    File_Test();
+    CHECK(obj.isSourceActive(filePath) == false);
+    CHECK(obj.isOpen() == false);
 }

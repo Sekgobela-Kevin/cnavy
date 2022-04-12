@@ -1,13 +1,14 @@
 #include <iostream>
 #include <iomanip>
-#include <cassert>
 #include <string>
 #include <memory>
 
-#include "character.hpp"
-#include "characters.hpp"
 #include "raw_token.hpp"
 #include "raw_tokenise.hpp"
+#include "character.hpp"
+#include "characters.hpp"
+
+#include "doctest.h"
 using namespace std;
 
 /*
@@ -15,7 +16,9 @@ using namespace std;
  xtess/components/tokeniser/*.cpp
 */
 
-void Raw_Tokenise_Test(){
+void Enable_Doctest_Raw_Tokeniser(){};
+
+TEST_CASE("Raw_Tokenise Class test"){
     clog << "Test: Started Raw_Tokenise Class Test using" << endl;
 
     string* input_string = new std::string("programming is power on power");
@@ -41,35 +44,28 @@ void Raw_Tokenise_Test(){
         cout << "|" << text_toks[i] << "|" << std::setw(10) << "is at index: ["<< i<< "]" << endl;
     }
 
-    if(input_string->size() != 29){
-        cerr << "Test[FAILED]: Testing string was changed" << endl;
-        exit(EXIT_FAILURE);
-    }
+    // check if test string was not changed
+    REQUIRE(*input_string == "programming is power on power");
     
     cerr << "input_string validated" << endl;
-    assert(char_objs.size() == input_string->size());
-    assert(chars_objs.size() == text_toks.size());
-    assert(text_toks.size() == 9);
+    CHECK(char_objs.size() == input_string->size());
+    CHECK(chars_objs.size() == text_toks.size());
+    CHECK(text_toks.size() == 9);
 
-    assert(shared_chars.size() == 5);
-    assert(shared_char.size() <= char_objs.size());
+    CHECK(shared_chars.size() == 5);
+    CHECK(shared_char.size() <= char_objs.size());
 
     cerr << "length of collections validated" << endl;
 
     // if values change then, characters were referenced from share objects
     char_objs[1].get().setCurrentChar('N', true);
     char_type char_ = char_objs[char_objs.size()-1].get().char_;
-    assert(char_ == 'N');
+    CHECK(char_ == 'N');
     cerr << "accessing character object from characters objects" << endl;
     // access character object from characters objects
     string tok_text = token->chars_objects[8].get().text;
     cout << tok_text << endl;
-    //assert(tok_text == "poweN");
+    //CHECK(tok_text == "poweN");
 
     clog << "Test: Raw_Tokenise Class passed tests successfully" << endl;
-}
-
-
-int main(){
-    Raw_Tokenise_Test();
 }

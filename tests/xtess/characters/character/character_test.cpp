@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cassert>
-#include "../character.hpp"
+#include "character.hpp"
+#include "doctest.h"
 
 using namespace std;
 
@@ -9,75 +9,73 @@ using namespace std;
  * test\character_test.cpp
 */
 
-void Character_Test(){
+void Enable_Doctest_Character(){};
+
+TEST_CASE("Character Class test"){
     clog << "Test: Started Character Class Test using" << endl;
 
     wchar_t char_ = 'a';  
     Character obj(char_);
     
-    assert(obj.getCurrentChar() == char_);
+    CHECK(obj.getCurrentChar() == char_);
     obj.setCurrentChar('@', true);
-    assert(obj.getCurrentChar() == '@');
+    CHECK(obj.getCurrentChar() == '@');
 
-    assert(obj.isascii());
+    CHECK(obj.isascii());
     obj.setCurrentChar('@', true);
-    assert(obj.isascii());
+    CHECK(obj.isascii());
     obj.setCurrentChar('\t', true);
 
-    assert(!obj.isalnum());
+    CHECK(!obj.isalnum());
     obj.setCurrentChar('H', true);
-    assert(obj.isalnum());
+    CHECK(obj.isalnum());
 
-    assert(obj.isalpha());
+    CHECK(obj.isalpha());
     obj.setCurrentChar('(', true);
-    assert(!obj.isalpha());
+    CHECK(!obj.isalpha());
 
-    assert(obj.isblank() == false);
+    CHECK(obj.isblank() == false);
     obj.setCurrentChar('H', true);
-    assert(!obj.isblank());
+    CHECK(!obj.isblank());
 
-    assert(obj.iscntrl() == false);
+    CHECK(obj.iscntrl() == false);
     obj.setCurrentChar('\t', true);
-    assert(obj.iscntrl());
+    CHECK(obj.iscntrl());
 
-    assert(obj.isdigit() == false);
+    CHECK(obj.isdigit() == false);
     obj.setCurrentChar('7', true);
-    assert(obj.isdigit());
+    CHECK(obj.isdigit());
 
-    assert(obj.isgraph());
+    CHECK(obj.isgraph());
     obj.setCurrentChar('H', true);
-    assert(obj.isgraph());
+    CHECK(obj.isgraph());
 
-    assert(!obj.islower());
+    CHECK(!obj.islower());
     obj.setCurrentChar('h', true);
-    assert(obj.islower());
+    CHECK(obj.islower());
 
-    assert(obj.isprint());
+    CHECK(obj.isprint());
     obj.setCurrentChar('6', true);
-    assert(obj.isprint());
+    CHECK(obj.isprint());
 
-    assert(obj.ispunct() == false);
+    CHECK(obj.ispunct() == false);
     obj.setCurrentChar('?', true);
-    assert(obj.ispunct());
+    CHECK(obj.ispunct());
 
-    assert(obj.isspace() == false);
+    CHECK(obj.isspace() == false);
     obj.setCurrentChar('\t', true);
-    assert(obj.isspace());
+    CHECK(obj.isspace());
 
 
     obj.setCurrentChar('H', true);
-    assert(obj.isupper());
+    CHECK(obj.isupper());
     obj.setCurrentChar('h', true);
-    assert(obj.isupper() == false);
+    CHECK(obj.isupper() == false);
 
-    assert(!obj.isxdigit());
+    CHECK(!obj.isxdigit());
     obj.setCurrentChar('b', true);
-    assert(obj.isxdigit());
+    CHECK(obj.isxdigit());
 
 
     clog << "Test: Character class passed tests successfully" << endl;
-}
-
-int main(){
-    Character_Test();
 }
