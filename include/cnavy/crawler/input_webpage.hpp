@@ -1,3 +1,5 @@
+
+#pragma once
 #include "input.hpp"
 #include <iostream>
 
