@@ -10,11 +10,11 @@ add_library(xtesschrslib characters.cpp)
 
 ### link lib that depend on each other
 target_link_libraries(xtesscharslib xtesscharlib)
-target_link_libraries(xtessrawtokenlib xtesscharslib)
+target_link_libraries(xtesstoklib xtesscharslib)
 
 ### link all libs together to one
 target_link_libraries(xtesschrslib 
     xtesscharlib 
     xtesscharslib 
-    xtessrawtokenlib 
+    xtesstoklib 
 )
