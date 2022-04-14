@@ -26,7 +26,9 @@ set(DOCTEST_INCLUDE_DIR ${source_dir}/doctest CACHE INTERNAL "Path to include fo
 
 ### library links to other libs with test files
 ### it will be linked to executable target
-add_library(testslib enable_doctest.cpp)
+add_library(testslib helpers/enable_doctest.cpp)
+### dependecies of dependers of testlib find enable_doctest.hpp
+target_include_directories(testslib PUBLIC helpers)
 
 ### include doctest include director and source directory
 ### doctest is used by testlib and test files
@@ -71,6 +73,12 @@ target_link_libraries(testslib PUBLIC
 ### you can link to another executable target if you need
 add_executable(tests tests.cpp)
 target_link_libraries(tests testslib)
+
+### test all features integrated
+### its not formal test, just for observing.
+### not linked to testslib as it does not depend test files
+### Will be linked source files at root CMakeList.txt
+add_executable(tests_proto tests_proto.cpp)
 
 
 ### checkout this:
