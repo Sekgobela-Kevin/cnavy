@@ -37,12 +37,22 @@ target_link_libraries(cnavy PUBLIC toolslib)
 ### include tests
 add_subdirectory("${TESTS_PATH}")
 
+### link libraries to tests_proto executable target
+### build this target when neccessary with --target
+target_link_libraries(tests_proto PUBLIC
+        sqlite3
+        crawlerlib
+        rsmlib
+        xtesslib
+        toolslib
+)
 
 ### link any libs that depend on each other
 ### xtesschars requires tools and rsm require sqlite3
 ### linking directly to xtesslib wont work
 add_dependencies(rsmlib  sqlite3)
 target_link_libraries(xtesscharslib toolslib)
+target_link_libraries(xtesstokeniserlib PUBLIC toolslib)
 
 ### link testlib to executable target
 ### differerent executable for tests can be created
