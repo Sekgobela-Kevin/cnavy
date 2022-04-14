@@ -1,10 +1,10 @@
 ### add sqlite3 as library
-### set language of sqlite as C++
+### set language of sqlite as C
 add_library(sqlite3 sqlite3.c)
 set_target_properties(sqlite3 PROPERTIES LINKER_LANGUAGE C)
 
 ### include directory with sqlite headers
-### directory shared with other dependencies(INTERPHACE)
+### directory shared with other dependencies(INTERFACE)
 target_include_directories(sqlite3 INTERFACE "${SOURCE_DIR}")
 
 
