@@ -22,5 +22,5 @@ add_library(xtesslib xtess.cpp)
 target_link_libraries(xtesslib PUBLIC xtesschrslib xtesscmptlib)
 
 ### inter library linking
-### components depends on characters
-target_link_libraries(xtesscmptlib PUBLIC xtesschrslib)
+### tokenisers depends on characters like tokens
+target_link_libraries(xtesstokeniserlib PUBLIC xtesschrslib)
