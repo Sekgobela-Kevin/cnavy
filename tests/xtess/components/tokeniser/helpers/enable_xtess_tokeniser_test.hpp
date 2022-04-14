@@ -11,3 +11,4 @@
 void Enable_Doctest_Tokeniser_Test();
 
 void Enable_Doctest_Raw_Tokeniser();
+void Enable_Doctest_Basic_Tokeniser();
