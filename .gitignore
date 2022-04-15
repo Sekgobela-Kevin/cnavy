@@ -42,6 +42,6 @@ Thumbs.db
 ideas/
 test.cpp
 .vscode/
-build/
+*build/
 test.db
 tests/tests_proto.cpp
