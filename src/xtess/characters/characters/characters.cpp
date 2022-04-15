@@ -8,6 +8,10 @@ Characters::Characters(std::string input_text){
     this->update(input_text);
 }
 
+Characters::Characters(characters_objs_type char_objs){
+    this->update(char_objs);
+}
+
 Characters::Characters(){
     // included just to fix bug undefined reference to `Characters::Characters()'
     // it really fixed the bug, I dont know why default constructor is called when
@@ -27,6 +31,25 @@ void Characters::update(std::string input_text){
         this->characters_objs.push_back(char_obj);
     }
 }
+
+void Characters::update(characters_objs_type char_objs){
+    /* Allows to update Characters object from vector of Character objects */
+    /* String version of text will be extracted from the characters of the objects */
+    size_t size = char_objs.size();
+
+    this->characters_objs.clear();
+    this->input_string.clear();
+
+    this->input_string.reserve(size);
+    this->characters_objs.reserve(size);
+    
+    for (character_type char_obj : char_objs)
+    {
+        this->characters_objs.push_back(char_obj);
+        this->input_string.push_back(char_obj.char_);
+    }
+}
+
 
 std::string Characters::getText(){
     return this->input_string;

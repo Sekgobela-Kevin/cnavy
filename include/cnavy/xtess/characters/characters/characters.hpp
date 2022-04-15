@@ -32,6 +32,12 @@ class Characters{
          */
         Characters(std::string input_text);
         /**
+         * @brief Construct a new Characters object from collection of Character objects
+         * 
+         * @param char_objs 
+         */
+        Characters(characters_objs_type char_objs);
+        /**
          * @brief Construct a new Characters object
          * 
          */
@@ -44,6 +50,13 @@ class Characters{
          * @param input_text 
          */
         void update(std::string input_text);
+
+        /**
+         * @brief update Characters object from vector of Character objects.
+         * 
+         * @param char_objs 
+         */
+        void update(characters_objs_type char_objs);
 
         /**
          * @brief returns string version of the object

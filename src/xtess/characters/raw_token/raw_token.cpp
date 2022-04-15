@@ -1,11 +1,12 @@
 #include "raw_token.hpp"
+#include <cassert>
+#include <iostream>
 
-Raw_Token::shared_chars_t Raw_Token::shared_chars_objs = shared_chars_t();
+// define static shared_char_objs
+// removing this line will cause "undefined reference to `Raw_Token::shared_char_objs"
+Raw_Token::shared_char_t Raw_Token::shared_char_objs = shared_char_t();
 
 void Raw_Token::setAttrs(Characters& chars_obj){
-        // store reference to Characters object(not used)
-        // maybe it may be important
-        this->chars_obj = &chars_obj;
 
         // booleans representing if corresponding character is alphanumeric
         this->bool_is_alnum = Bool_Characters::isAlnum(chars_obj);
@@ -37,6 +38,9 @@ void Raw_Token::setAttrs(Characters& chars_obj){
         // ratio characters
 
         // proportion/ratio of alphanumeric characters in token
+        // not worth to use ratio characters while bool characters already calculated
+        // the methods individually calls getBoolRatio() to interact with Bool_Characters
+        // directly calling Ratio_Characters::getBoolRatio() will improve performance
         this->ratio_is_alnum = Ratio_Characters::isAlnum(chars_obj);
         // proportion/ratio of alphabetic characters in token
         this->ratio_is_alpha = Ratio_Characters::isAlpha(chars_obj);
@@ -66,6 +70,9 @@ void Raw_Token::setAttrs(Characters& chars_obj){
         // summary characters(using ratio of 1)
 
         // checks if token is alphanumeric
+        // to save memory, this attributes can be removed
+        // method versions of it can be used
+        // just included to simplify accessing attributes of object
         this->is_alnum = this->isAlnum();
         // checks if token is alphabetic
         this->is_alpha = this->isAlpha();
@@ -103,34 +110,66 @@ void Raw_Token::setAttrs(Characters& chars_obj){
 }
 
 Raw_Token::Raw_Token(Characters chars_obj){
+    /**
+     * creates object from Characters object
+     * only text of character object is neccessay
+     */
+    // extract text from Characters object
     std::string obj_text = chars_obj.getText();
-    Raw_Token::shared_chars_objs.add(obj_text, chars_obj);
-    Characters chars_obj_ = Raw_Token::shared_chars_objs.get(obj_text);
-    this->setAttrs(chars_obj_);
+    // call another constructor
+    // this will handle everything
+    Raw_Token(chars_obj.getText());
 };
 
-Raw_Token::Raw_Token(std::string& input_text){
-    Raw_Token::shared_chars_objs.add(input_text);
-    Characters chars_obj_ = Raw_Token::shared_chars_objs.get(input_text);
+Raw_Token::Raw_Token(std::string input_text){
+    std::cout << "Raw_Token(std::string input_text)\n" << std::endl;
+    /**
+     * Creates Raw_Token object from string
+     * No dependence from Characters object 
+     * Character objects are shared but Characters object not.
+     * Characters objects get created dynamically
+    */
+
+    // creates needed character objects in shared object
+    // shared object will take care of everything
+    std::cout << "add to shared" << std::endl;
+    Raw_Token::shared_char_objs.add(input_text.begin(), input_text.end());
+    std::cout << "finished adding to shared\n" << std::endl;
+    character_objs_ref.reserve(input_text.size());
+    std::cout << "looping string" << std::endl;
+    for(char_type char_ : input_text){
+        // retrieve corresponding character object from shared objects
+        // time complexity not measured but expect constant time
+        Character& char_obj = Raw_Token::shared_char_objs.get(char_);
+        // store reference of character object locally from shared object
+        character_objs_ref.push_back(char_obj);
+    }
+    std::cout << "finished looping string\n" << std::endl;
+    std::cout << "getting char objects" << std::endl;
+    // get copy version of char_objs
+    // turns vector<std::reference_wrapper<Character>> to vector<Character>
+    std::vector<Character> char_objs = this->getCharObjs(character_objs_ref);
+    std::cout << "finished getting char objects\n" << std::endl;
+    std::cout << "creating chars object" << std::endl;
+    // create characters object to be used temporary
+    // creating characters object from char_objs is faster than from string
+    // character objects get reused which makes it faster than creating new ones everytime
+    Characters chars_obj_ = Characters(char_objs);
+    std::cout << "finished getting chars objs\n" << std::endl;
+    // set object(this) attributes from character object
+    // this method can be slow as it performs calculations on character object
     this->setAttrs(chars_obj_);
-    printf("finished constr\n");
+    std::cout << "finished Raw_Token(std::string input_text)" << std::endl;
 }
 
-Raw_Token::Raw_Token(Characters chars_obj, Shared_Objects<std::string, 
-Characters>& shared_chars_objs){
-    std::string obj_text = chars_obj.getText();
-    shared_chars_objs.add(chars_obj.getText(), chars_obj);
-    Characters chars_obj_ = shared_chars_objs.get(obj_text);
-    this->setAttrs(chars_obj_);
-};
-
-Raw_Token::Raw_Token(std::string& input_text, Shared_Objects<std::string, 
-Characters>& shared_chars_objs){
-    shared_chars_objs.add(input_text);
-    Characters chars_obj_ = shared_chars_objs.get(input_text);
-    this->setAttrs(chars_obj_);
+std::vector<Character> Raw_Token::getCharObjs(Raw_Token::vector_ref_t char_objs_ref){
+    std::vector<Character> char_objs;
+    char_objs.reserve(char_objs_ref.size());
+    for(auto char_obj_ref : char_objs_ref){
+        char_objs.push_back(char_obj_ref.get());
+    }
+    return char_objs;
 }
-
 
 bool Raw_Token::isAlnum(float true_ratio) const{
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_alpha);

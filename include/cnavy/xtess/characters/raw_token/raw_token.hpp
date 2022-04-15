@@ -118,15 +118,18 @@ class Raw_Token{
         int length;
 
     public:
-        using shared_chars_t = Shared_Objects<std::string, Characters>;
+        using vector_ref_t = std::vector<std::reference_wrapper<Character>>;
+
+        using shared_char_t = Shared_Objects<char_type, Character>;
+
+        static shared_char_t shared_char_objs;
+
         /**
-         * @brief pointer to underlying character object
+         * @brief vector with references to character objects. It could be Character, Line_Character
+         * or Basic_Character.
+         * 
          */
-        Characters* chars_obj = nullptr;
-        /***
-         * static shared object to underlying characters objects
-        */
-        static shared_chars_t shared_chars_objs;
+        vector_ref_t character_objs_ref;
 
     public:
         /**
@@ -144,11 +147,11 @@ class Raw_Token{
         Raw_Token(Characters chars_obj, Shared_Objects<std::string, 
         Characters>& shared_chars_objs);
         /**
-         * @brief Construct a new Raw_Token object
+         * @brief Construct a new Raw_Token object from string
          * 
          * @param input_text 
          */
-        Raw_Token(std::string& input_text);
+        Raw_Token(std::string input_text);
         /**
          * @brief Construct a new Raw_Token object
          * 
@@ -157,17 +160,39 @@ class Raw_Token{
          */
         Raw_Token(std::string& input_text, Shared_Objects<std::string, Characters>& shared_char_objs);
         /**
+         * @brief Construct a new Raw_Token object
+         * 
+         */
+        Raw_Token();
+        /**
          * @brief sets attributes of of object from Characters object
          * 
          * @param chars_obj 
          * @return Characters 
          */
         void setAttrs(Characters& chars_obj);
+
         /**
-         * @brief Construct a new Raw_Token object
+         * @brief get copy version of vector of references
          * 
+         * @param char_objs_ref 
+         * @return std::vector<Character> 
          */
-        Raw_Token();
+        std::vector<Character> getCharObjs(Raw_Token::vector_ref_t char_objs_ref);
+        /**
+         * @brief returns collection of chararacter objects
+         * 
+         * @param char_objs_ref 
+         * @return std::vector<Character> 
+         */
+        std::vector<Character> getCharObjs();
+        /**
+         * @brief creates character object and return it
+         * 
+         * @param char_objs_ref 
+         * @return std::vector<Character> 
+         */
+        Character getCharsObj();
 
         // ----------Summary Characters methods-------------
 
