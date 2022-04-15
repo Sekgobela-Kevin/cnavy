@@ -3,10 +3,6 @@
 #include <string>
 #include <memory>
 
-
-#include "character.hpp"
-#include "characters.hpp"
-#include "raw_token.hpp"
 #include "basic_tokeniser.hpp"
 
 #include "doctest.h"
@@ -24,8 +20,8 @@ TEST_CASE("Basic_Tokeniser Class test"){
 
     string* input_string = new std::string("programming is power on power");
 
-    Shared_Objects<char_type, Character> shared_char;
-    Shared_Objects<std::string, Raw_Token> shared_chars;
+    Shared_Objects<char_type, Basic_Character> shared_char;
+    Shared_Objects<std::string, Basic_Token> shared_chars;
 
     using tokens_t = Basic_Tokeniser;
 
