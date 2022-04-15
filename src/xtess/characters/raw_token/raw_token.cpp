@@ -122,7 +122,6 @@ Raw_Token::Raw_Token(Characters chars_obj){
 };
 
 Raw_Token::Raw_Token(std::string input_text){
-    std::cout << "Raw_Token(std::string input_text)\n" << std::endl;
     /**
      * Creates Raw_Token object from string
      * No dependence from Characters object 
@@ -132,11 +131,8 @@ Raw_Token::Raw_Token(std::string input_text){
 
     // creates needed character objects in shared object
     // shared object will take care of everything
-    std::cout << "add to shared" << std::endl;
     Raw_Token::shared_char_objs.add(input_text.begin(), input_text.end());
-    std::cout << "finished adding to shared\n" << std::endl;
     character_objs_ref.reserve(input_text.size());
-    std::cout << "looping string" << std::endl;
     for(char_type char_ : input_text){
         // retrieve corresponding character object from shared objects
         // time complexity not measured but expect constant time
@@ -144,22 +140,16 @@ Raw_Token::Raw_Token(std::string input_text){
         // store reference of character object locally from shared object
         character_objs_ref.push_back(char_obj);
     }
-    std::cout << "finished looping string\n" << std::endl;
-    std::cout << "getting char objects" << std::endl;
     // get copy version of char_objs
     // turns vector<std::reference_wrapper<Character>> to vector<Character>
     std::vector<Character> char_objs = this->getCharObjs(character_objs_ref);
-    std::cout << "finished getting char objects\n" << std::endl;
-    std::cout << "creating chars object" << std::endl;
     // create characters object to be used temporary
     // creating characters object from char_objs is faster than from string
     // character objects get reused which makes it faster than creating new ones everytime
     Characters chars_obj_ = Characters(char_objs);
-    std::cout << "finished getting chars objs\n" << std::endl;
     // set object(this) attributes from character object
     // this method can be slow as it performs calculations on character object
     this->setAttrs(chars_obj_);
-    std::cout << "finished Raw_Token(std::string input_text)" << std::endl;
 }
 
 std::vector<Character> Raw_Token::getCharObjs(Raw_Token::vector_ref_t char_objs_ref){
