@@ -114,7 +114,7 @@ class Reference_Token{
          * @brief Characters object
          * 
          */
-        const Characters& chars_obj;
+        //const Characters& chars_obj;
         /**
          * @brief Characters Token object
          * 

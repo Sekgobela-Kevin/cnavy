@@ -5,7 +5,7 @@ Reference_Token::Reference_Token(Raw_Token& chars_token) :
 
 // argumets via object initialization lists
 chars_token(chars_token),
-chars_obj(*chars_token.chars_obj),
+//chars_obj(chars_token.getCharsObj()),
 
 // booleans representing if corresponding character is alphanumeric
 bool_is_alnum(chars_token.bool_is_alnum),
