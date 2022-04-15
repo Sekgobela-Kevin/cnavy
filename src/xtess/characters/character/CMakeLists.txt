@@ -10,6 +10,7 @@ cmake_minimum_required(VERSION 3.1...3.23)
 add_library(xtesscharlib 
             character_compute.cpp
             character.cpp
+            basic_character.cpp
 )
 
 ### include path with header files
