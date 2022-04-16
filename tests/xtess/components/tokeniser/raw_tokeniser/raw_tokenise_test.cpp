@@ -8,6 +8,8 @@
 #include "character.hpp"
 #include "characters.hpp"
 
+#include "basic_character.hpp"
+
 #include "doctest.h"
 using namespace std;
 
@@ -24,9 +26,9 @@ TEST_CASE("Raw_Tokenise Class test"){
     string* input_string = new std::string("programming is power on power");
 
     Shared_Objects<char_type, Character> shared_char;
-    Shared_Objects<std::string, Raw_Token> shared_chars;
+    Shared_Objects<std::string, Raw_Token<Basic_Character>> shared_chars;
 
-    using tokens_t = Raw_Tokenise<Character, Raw_Token>;
+    using tokens_t = Raw_Tokenise<Character, Raw_Token<Basic_Character>>;
 
     tokens_t* token = new  tokens_t(*input_string, shared_char, shared_chars);
 
