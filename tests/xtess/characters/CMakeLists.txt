@@ -14,7 +14,7 @@ add_library(xtesschrstestlib
     characters/compare_characters_test.cpp
     
     raw_token/raw_token_test.cpp
-    raw_token/reference_token_test.cpp
+    #raw_token/reference_token_test.cpp
 )
 
 target_include_directories(xtesschrstestlib PUBLIC helpers)
