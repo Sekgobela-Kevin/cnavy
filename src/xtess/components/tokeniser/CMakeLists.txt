@@ -10,6 +10,7 @@ cmake_minimum_required(VERSION 3.1...3.23)
 add_library(xtesstokeniserlib 
             tokeniser.cpp
             basic_tokeniser/basic_tokeniser.cpp
+            raw_tokeniser/raw_tokenise.cpp
 )
 
 ### include path with header files
