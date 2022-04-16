@@ -18,7 +18,7 @@
  * object like index, spans, etc.
  * 
  */
-class Raw_Token{
+template<class char_class> class Raw_Token{
     public:
         // bool characters
         // Each boolean value represent state of character in that pos
@@ -118,9 +118,9 @@ class Raw_Token{
         int length;
 
     public:
-        using vector_ref_t = std::vector<std::reference_wrapper<Character>>;
+        using vector_ref_t = std::vector<std::reference_wrapper<char_class>>;
 
-        using shared_char_t = Shared_Objects<char_type, Character>;
+        using shared_char_t = Shared_Objects<char_type, char_class>;
 
         static shared_char_t shared_char_objs;
 
@@ -180,19 +180,18 @@ class Raw_Token{
          */
         std::vector<Character> getCharObjs(Raw_Token::vector_ref_t char_objs_ref);
         /**
+         * @brief generate Characters object and return it
+         *
+         * @return Characters Characters object 
+         */
+        Characters getCharsObj();
+        /**
          * @brief returns collection of chararacter objects
          * 
          * @param char_objs_ref 
          * @return std::vector<Character> 
          */
         std::vector<Character> getCharObjs();
-        /**
-         * @brief creates character object and return it
-         * 
-         * @param char_objs_ref 
-         * @return std::vector<Character> 
-         */
-        Character getCharsObj();
 
         // ----------Summary Characters methods-------------
 

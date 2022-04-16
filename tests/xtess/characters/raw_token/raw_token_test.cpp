@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "raw_token.hpp"
+#include "basic_character.hpp"
 #include "doctest.h"
 using namespace std;
 
@@ -27,7 +28,7 @@ TEST_CASE("Raw_Token"){
     Characters* chars_obj = new Characters(*input_string);
     clog << "Test: Created Character object" << endl;
 
-    Raw_Token* raw_tokens = new Raw_Token(*input_string);
+    Raw_Token<Basic_Character>* raw_tokens = new Raw_Token<Basic_Character>(*input_string);
     clog << "Test: Created Raw_Token object" << endl;
 
     CHECK(raw_tokens->is_alnum);
