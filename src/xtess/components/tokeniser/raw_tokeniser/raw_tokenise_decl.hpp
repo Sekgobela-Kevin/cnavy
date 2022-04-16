@@ -1,8 +1,10 @@
 #pragma once
 #include "shared_objects.hpp"
-#include "raw_token.hpp"
+#include "character.hpp"
 
 #include <vector>
+#include <string>
+#include <functional>
 
 
 /**
@@ -11,6 +13,7 @@
  */
 template<class char_class, class chars_class> class Raw_Tokenise{
     public:
+        using this_t = Raw_Tokenise<char_class, chars_class>;
         /**
          * @brief type for shared character objects
          * 
@@ -22,14 +25,22 @@ template<class char_class, class chars_class> class Raw_Tokenise{
          */
         using shared_chars_objs_t = Shared_Objects<std::string, chars_class>;
         /**
+         * @brief shared object for tokens objects of chars_class
+         * 
+         */
+        static shared_chars_objs_t shared_chars_objs;
+        /**
          * @brief Construct a new Raw_Tokenise object
          * 
          * @param text text string to be tokenised
-         * @param shared_char_objs shared character object
-         * @param shared_chars_objs shared characters object
          */
-        Raw_Tokenise(std::string& text, shared_char_objs_t& shared_char_objs, 
-        shared_chars_objs_t& shared_chars_objs);
+        Raw_Tokenise(std::string text);
+        /**
+         * @brief Construct a new Raw_Tokenise object
+         * 
+         * @param text text string to be tokenised
+         */
+        Raw_Tokenise(std::string text, std::function<bool(char_type)> func);
 
 
     public:
@@ -38,16 +49,6 @@ template<class char_class, class chars_class> class Raw_Tokenise{
          * 
          */
         std::string text;
-        /**
-         * @brief stores char_class objects to be shared by Tokens
-         * 
-         */
-        shared_char_objs_t& shared_char_objs; 
-        /**
-         * @brief stores chars_class class objects to be shared by Tokens
-         * 
-         */
-        shared_chars_objs_t& shared_chars_objs; 
         /**
          * @brief type defining collection of Character_Token objects
          * 
@@ -59,26 +60,20 @@ template<class char_class, class chars_class> class Raw_Tokenise{
          */
         using char_coll_t = typename std::vector<std::reference_wrapper<char_class>>;
         /**
+         * @brief type defining characters object reference in std::reference_wrapper
+         * 
+         */
+        using chars_ref_t = std::reference_wrapper<chars_class>;
+        /**
+         * @brief type defining character object reference in std::reference_wrapper
+         * 
+         */
+        using char_ref_t = std::reference_wrapper<char_class>;
+        /**
          * @brief vector with characters objects/tokens
          * 
          */
-        chars_coll_t chars_objects;
-        /**
-         * @brief creates character objects from iterator
-         * 
-         * @param begin begining of iterator
-         * @param end end of of iterator
-         * @return char_coll_t 
-         */
-        template<typename Iterator>
-        char_coll_t createCharObjs(Iterator begin, Iterator end);
-        /**
-         * @brief returns character from char_class object/
-         * 
-         * @param char_obj object of char_class
-         * @return char_type character e.g char or wchar_t
-         */
-        char_type getChar(char_class char_obj);
+        chars_coll_t chars_objs_ref;
         /**
          * @brief returns character from chars_class object/
          * 
@@ -91,50 +86,57 @@ template<class char_class, class chars_class> class Raw_Tokenise{
          * characters are ofsen used for that. By default, only non alphabetic characters
          * return true.
          * 
-         * @param char_obj object of char_class
+         * @param char_t character
          * @return true 
          * @return false 
          */
-        bool isBreakChar(char_class char_obj);
+        bool isBreakChar(char_type chat_);
         /**
-         * @brief creates character objects from iterator
+         * @brief creates token objects from text
          * 
-         * @param begin begining of iterator
-         * @param end end of of iterator
+         * @param text text to split to pieces
          * @param func skips character if returns false
          * @return char_coll_t 
          */
-        template<typename Iterator>
-        char_coll_t createCharObjs(Iterator begin, Iterator end, std::function<bool(char_type)> func);
+        chars_coll_t createTokens(std::string& text, std::function<bool(char_type)> func);
         /**
-         * @brief reates character objects from string
+         * @brief creates token objects from text
          * 
          * @param str string with characters
          * @return char_coll_t 
          */
-        char_coll_t createCharObjs(std::string str);
+        chars_coll_t createTokens(std::string& text);
         /**
          * @brief split text into individual tokens(strings)
          * 
          * @param text text to split to pieces
-         * @param char_objects collection of characters object(vector)
+         * @param func if returns true, character is split to its own token.
          * @return std::vector<std::string> 
          */
-        std::vector<std::string> splitText(std::string& text, char_coll_t& char_objects);
-        /**
-         * @brief create characters objects/raw_tokens into collection
-         * 
-         * @param char_objects character objects in collection
-         * @return chars_coll_t 
-         */
-        chars_coll_t createCharsObjs(std::string& text, char_coll_t& char_objects);
+        std::vector<std::string> splitText(std::string& text, std::function<bool(char_type)> func);
 
-        /**
-         * @brief create characters objects/raw_tokens into collection
-         * 
-         * @param char_objects character objects in collection
-         * @param func if function returns true then that character is seen as seperate token
-         * @return chars_coll_t 
-         */
-        chars_coll_t createCharsObjs(chars_coll_t char_objects, std::function<bool(char_class)> func);
+
+
+
+    public:
+        // iterator methods
+        typename chars_coll_t::iterator begin();
+        typename chars_coll_t::iterator end();
+        typename chars_coll_t::const_iterator cbegin() const;
+        typename chars_coll_t::const_iterator cend() const;
+        typename chars_coll_t::const_iterator begin() const;
+        typename chars_coll_t::const_iterator end() const;
+
+        // operator overiding
+        chars_ref_t& operator[](size_t index);
+        Raw_Tokenise<char_class, chars_class> operator+(Raw_Tokenise<char_class, chars_class>& other);
+        bool operator==(std::string& other);
+        bool operator!=(std::string& other);
+        bool operator==(const char* other);
+        bool operator!=(const char* other);
+        bool operator==(Raw_Tokenise<char_class, chars_class>& other);
+        bool operator!=(Raw_Tokenise<char_class, chars_class>& other);
+
+        template <typename char_class_, typename chars_class_>
+        friend std::ostream& operator<<( std::ostream&, const Raw_Tokenise<char_class_, chars_class_>&);
 };

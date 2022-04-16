@@ -245,3 +245,82 @@ template<class char_class>
 bool Raw_Token<char_class>::isXdigit(float true_ratio) const{;
     return Summary_Characters::ratioCompare(true_ratio, this->ratio_is_xdigit);
 }
+
+
+
+
+
+
+// iterator methods
+template<class char_class>
+typename Raw_Token<char_class>::vector_ref_t::iterator 
+Raw_Token<char_class>::begin(){ return this->character_objs_ref.begin(); }
+
+template<class char_class>
+typename Raw_Token<char_class>::vector_ref_t::iterator 
+Raw_Token<char_class>::end() { return this->character_objs_ref.end(); }
+
+template<class char_class>
+typename  Raw_Token<char_class>::vector_ref_t::const_iterator 
+Raw_Token<char_class>::cbegin() const { return this->character_objs_ref.begin(); }
+
+template<class char_class>
+typename Raw_Token<char_class>::vector_ref_t::const_iterator 
+Raw_Token<char_class>::cend() const { return this->character_objs_ref.end(); }
+
+template<class char_class>
+typename Raw_Token<char_class>::vector_ref_t::const_iterator 
+Raw_Token<char_class>::begin() const { return this->character_objs_ref.begin(); }
+
+template<class char_class>
+typename Raw_Token<char_class>::vector_ref_t::const_iterator 
+Raw_Token<char_class>::end() const { return this->character_objs_ref.end(); }
+
+
+// method overiding
+template<class char_class>
+typename Raw_Token<char_class>::char_obj_ref_t& 
+Raw_Token<char_class>::operator[](size_t index) { return this->character_objs_ref[index]; }
+
+template<class char_class>
+Raw_Token<char_class> Raw_Token<char_class>::operator+(Raw_Token<char_class>& other){
+    return Raw_Token<char_class>(this->text + other.text);
+}
+
+template<class char_class>
+bool Raw_Token<char_class>::operator==(Raw_Token<char_class>& other){
+    return this->text == other.text;
+};
+
+
+template<class char_class>
+bool Raw_Token<char_class>::operator!=(Raw_Token<char_class>& other){
+    return this->text != other.text;
+};
+
+template<class char_class>
+bool Raw_Token<char_class>::operator==(std::string other){
+    return this->text == other;
+}
+
+template<class char_class>
+bool Raw_Token<char_class>::operator!=(std::string other){
+    return this->text != other;
+}
+
+template<class char_class>
+bool Raw_Token<char_class>::operator==(const char* other){
+    return this->text == other;
+}
+
+template<class char_class>
+bool Raw_Token<char_class>::operator!=(const char* other){
+    return this->text != other;
+}
+
+template <typename char_class_t>
+std::ostream& operator<<( std::ostream& out_stream, const Raw_Token<char_class_t>& token_obj){
+    out_stream << token_obj.text << std::endl;
+    return out_stream;
+}
+

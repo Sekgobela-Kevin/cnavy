@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <functional>
 #include <set>
+#include <vector>
 
 
 /**
@@ -139,4 +140,39 @@ template<class key_t, class val_t> class Shared_Objects{
          * @return val_t 
          */
         val_t& get(key_t key);
+
+        /**
+         * @brief returns keys in vector
+         * 
+         * @return std::vector<key_t> 
+         */
+        std::vector<key_t> getKeys();
+        /**
+         * @brief returns values in vector
+         * 
+         * @return std::vector<val_t>
+         */
+        std::vector<val_t> getValues();
+
+
+        // iterator methods
+        typename std::unordered_map<key_t, val_t>::iterator begin();
+        typename std::unordered_map<key_t, val_t>::iterator end();
+        typename std::unordered_map<key_t, val_t>::const_iterator cbegin() const;
+        typename std::unordered_map<key_t, val_t>::const_iterator cend() const;
+        typename std::unordered_map<key_t, val_t>::const_iterator begin() const;
+        typename std::unordered_map<key_t, val_t>::const_iterator end() const;
+
+        // operator overiding
+        val_t& operator[](key_t index);
+        Shared_Objects<key_t, val_t> operator+(Shared_Objects<key_t, val_t> other);
+        bool operator==(std::string other);
+        bool operator==(const char* other);
+        bool operator==(Shared_Objects<key_t, val_t>& other);
+        bool operator!=(Shared_Objects<key_t, val_t>& other);
+
+        // helped by: https://stackoverflow.com/questions/4660123/
+        // overloading-friend-operator-for-template-class
+        template <typename key_ft, typename val_ft>
+        friend std::ostream& operator<<( std::ostream&, const Shared_Objects<key_ft, val_ft>&);
 };

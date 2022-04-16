@@ -1,6 +1,8 @@
 #include "shared_objects_decl.hpp"
 #include <iterator>
 #include <set>
+#include <unordered_set>
+#include "cassert"
 
 template<class key_t, class val_t>
 Shared_Objects<key_t, val_t>::Shared_Objects(){
@@ -98,4 +100,78 @@ std::set<key_t> Shared_Objects<key_t, val_t>::unique(Iterator begin, Iterator en
     std::set<key_t> unique_set;
     for( Iterator it = begin; it != end; it++) unique_set.insert( *it );
     return unique_set;
+}
+
+template<class key_t, class val_t>
+std::vector<key_t> 
+Shared_Objects<key_t, val_t>::getKeys(){
+    std::vector<key_t> keys;
+    keys.reserve(this->shared_map.size());
+    for(auto pair_obj : this->shared_map) keys.push_back(pair_obj.first);
+    return keys;
+}
+
+template<class key_t, class val_t>
+std::vector<val_t> Shared_Objects<key_t, val_t>::getValues(){
+    std::vector<val_t> values;
+    values.reserve(this->shared_map.size());
+    for(auto pair_obj : this->shared_map) values.push_back(pair_obj.second);
+    return values;
+}
+
+
+
+// iterator methods
+template<class key_t, class val_t>
+typename std::unordered_map<key_t, val_t>::iterator 
+Shared_Objects<key_t, val_t>::begin(){ return this->shared_map.begin(); };
+
+template<class key_t, class val_t>
+typename std::unordered_map<key_t, val_t>::iterator 
+Shared_Objects<key_t, val_t>::end() { return this->shared_map.end(); }
+
+template<class key_t, class val_t>
+typename  std::unordered_map<key_t, val_t>::const_iterator 
+Shared_Objects<key_t, val_t>::cbegin() const { return this->shared_map.begin(); }
+
+template<class key_t, class val_t>
+typename std::unordered_map<key_t, val_t>::const_iterator 
+Shared_Objects<key_t, val_t>::cend() const { return this->shared_map.end(); }
+
+template<class key_t, class val_t>
+typename std::unordered_map<key_t, val_t>::const_iterator 
+Shared_Objects<key_t, val_t>::begin() const { return this->shared_map.begin(); }
+
+template<class key_t, class val_t>
+typename std::unordered_map<key_t, val_t>::const_iterator 
+Shared_Objects<key_t, val_t>::end() const { return this->shared_map.end(); }
+
+
+// method overiding
+template<class key_t, class val_t>
+val_t& Shared_Objects<key_t, val_t>::operator[](key_t key) { return this->shared_map[key]; }
+
+template<class key_t, class val_t>
+Shared_Objects<key_t, val_t> Shared_Objects<key_t, val_t>::operator+(Shared_Objects<key_t, val_t> other){
+    for(auto pair_obj : this->shared_map){
+        other.add(pair_obj.first, pair_obj.second);
+    };
+    return other;
+}
+
+template<class key_t, class val_t>
+bool Shared_Objects<key_t, val_t>::operator==(Shared_Objects<key_t, val_t>& other){
+    return this->shared_map == other.shared_map;
+};
+
+template<class key_t, class val_t>
+bool Shared_Objects<key_t, val_t>::operator!=(Shared_Objects<key_t, val_t>& other){
+    return this->shared_map != other.shared_map;
+};
+
+
+template <typename key_ft, typename val_ft>
+std::ostream& operator<<( std::ostream& out_stream, const Shared_Objects<key_ft, val_ft>& shared_obj){
+    for(auto pair_obj : shared_obj->shared_map) out_stream << pair_obj.first << std::endl;
+    return out_stream;
 }

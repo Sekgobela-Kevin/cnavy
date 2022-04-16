@@ -9,6 +9,7 @@
 #include "shared_objects.hpp"
 
 #include <string>
+#include <vector>
 
 /**
  * @brief Kind of Characters Class that precomputes verything other than calculating for
@@ -118,6 +119,10 @@ template<class char_class> class Raw_Token{
         int length;
 
     public:
+        //using char_class = char_class;
+
+        using char_obj_ref_t = std::reference_wrapper<char_class>;
+
         using vector_ref_t = std::vector<std::reference_wrapper<char_class>>;
 
         using shared_char_t = Shared_Objects<char_type, char_class>;
@@ -338,4 +343,29 @@ template<class char_class> class Raw_Token{
          * @return bool
          */
         bool isGraph(float true_ratio=1) const;
+    
+
+    public:
+        // iterator methods
+        typename vector_ref_t::iterator begin();
+        typename vector_ref_t::iterator end();
+        typename vector_ref_t::const_iterator cbegin() const;
+        typename vector_ref_t::const_iterator cend() const;
+        typename vector_ref_t::const_iterator begin() const;
+        typename vector_ref_t::const_iterator end() const;
+
+        // operator overiding
+        char_obj_ref_t& operator[](size_t index);
+        Raw_Token<char_class> operator+(Raw_Token<char_class>& other);
+        bool operator==(std::string other);
+        bool operator!=(std::string other);
+        bool operator==(const char* other);
+        bool operator!=(const char* other);
+        bool operator==(Raw_Token<char_class>& other);
+        bool operator!=(Raw_Token<char_class>& other);
+
+        // helped by: https://stackoverflow.com/questions/4660123/
+        // overloading-friend-operator-for-template-class
+        template <typename char_class_, typename val_ft>
+        friend std::ostream& operator<<( std::ostream&, const Raw_Token<char_class_>&);
 };
