@@ -149,7 +149,7 @@ Shared_Objects<key_t, val_t>::end() const { return this->shared_map.end(); }
 
 // method overiding
 template<class key_t, class val_t>
-val_t& Shared_Objects<key_t, val_t>::operator[](key_t key) { return this->shared_map[key]; }
+val_t& Shared_Objects<key_t, val_t>::operator[](key_t key) { return this->shared_map.at(key); }
 
 template<class key_t, class val_t>
 Shared_Objects<key_t, val_t> Shared_Objects<key_t, val_t>::operator+(Shared_Objects<key_t, val_t> other){

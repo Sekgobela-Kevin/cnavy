@@ -79,7 +79,8 @@ TEST_CASE("Shared_Objects Class test"){
     CHECK(shared_chars == shared_chars);
     CHECK(shared_chars != shared_chars2);
 
-    
+    assert((*shared_chars)['t'] == 't');
+
 
     clog << "Test: Shared_Objects Class passed tests successfully" << endl;
 
