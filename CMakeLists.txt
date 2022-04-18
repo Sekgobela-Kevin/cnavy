@@ -47,6 +47,21 @@ target_link_libraries(tests_proto PUBLIC
         toolslib
 )
 
+
+### helped by: https://stackoverflow.com/questions/63985373
+### find and setup pthread flag(thread.h)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+set(CMAKE_THREAD_PREFER_PTHREAD ON)
+find_package(Threads REQUIRED)
+
+### link threads library if exists
+if(TARGET Threads::Threads)
+  target_link_libraries(cnavy PRIVATE Threads::Threads)
+  target_link_libraries(tests_proto PRIVATE Threads::Threads)
+endif()
+
+
+
 ### link any libs that depend on each other
 ### xtesschars requires tools and rsm require sqlite3
 ### linking directly to xtesslib wont work

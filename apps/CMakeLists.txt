@@ -27,16 +27,6 @@ add_executable(cnavy "${PROJECT_SOURCE_DIR}/apps/cnavy.cpp")
 ###target_compile_options(cnavy PUBLIC ${GCC_COMPILE_FLAGS})
 ##set_target_properties(cnavy PROPERTIES LINKER_LANGUAGE CXX)
 
-### helped by: https://stackoverflow.com/questions/63985373
-### find and setup pthread flag(thread.h)
-set(THREADS_PREFER_PTHREAD_FLAG ON)
-set(CMAKE_THREAD_PREFER_PTHREAD ON)
-find_package(Threads REQUIRED)
-
-### link threads library if exists
-if(TARGET Threads::Threads)
-  target_link_libraries(cnavy PRIVATE Threads::Threads)
-endif()
 
 ### include directories for program
 ### this does not include headers for dependencies
