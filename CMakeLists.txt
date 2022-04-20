@@ -19,7 +19,9 @@ set(SRC_PATH "${PROJECT_SOURCE_DIR}/src")
 include("${APPS_PATH}/CMakeLists.txt")
 
 ### add sub_directores(librarie/sub_projecs)
-add_subdirectory("${EXTERN_PATH}/sqlite")
+#add_subdirectory("${EXTERN_PATH}/sqlite")
+add_subdirectory("${EXTERN_PATH}/SQLiteCpp")
+
 add_subdirectory("${SRC_PATH}/tools")
 add_subdirectory("${SRC_PATH}/crawler")
 add_subdirectory("${SRC_PATH}/rsm")
@@ -28,7 +30,7 @@ add_subdirectory("${SRC_PATH}/xtess")
 
 
 ### link libraries to executable
-target_link_libraries(cnavy PUBLIC sqlite3)
+target_link_libraries(cnavy PUBLIC SQLiteCpp)
 target_link_libraries(cnavy PUBLIC crawlerlib)
 target_link_libraries(cnavy PUBLIC rsmlib)
 target_link_libraries(cnavy PUBLIC xtesslib)
@@ -40,7 +42,7 @@ add_subdirectory("${TESTS_PATH}")
 ### link libraries to tests_proto executable target
 ### build this target when neccessary with --target
 target_link_libraries(tests_proto PUBLIC
-        sqlite3
+        SQLiteCpp
         crawlerlib
         rsmlib
         xtesslib
@@ -65,7 +67,7 @@ endif()
 ### link any libs that depend on each other
 ### xtesschars requires tools and rsm require sqlite3
 ### linking directly to xtesslib wont work
-add_dependencies(rsmlib  sqlite3)
+add_dependencies(rsmlib  SQLiteCpp)
 target_link_libraries(xtesscharslib toolslib)
 target_link_libraries(xtesstokeniserlib PUBLIC toolslib)
 
