@@ -18,9 +18,14 @@ set(SRC_PATH "${PROJECT_SOURCE_DIR}/src")
 #include cmake files/scripts
 include("${APPS_PATH}/CMakeLists.txt")
 
-### add sub_directores(librarie/sub_projecs)
-#add_subdirectory("${EXTERN_PATH}/sqlite")
+### add external projects(dependencies)
 add_subdirectory("${EXTERN_PATH}/SQLiteCpp")
+add_subdirectory("${EXTERN_PATH}/myhtml")
+add_subdirectory("${EXTERN_PATH}/cpr")
+
+target_include_directories(myhtml PUBLIC "${EXTERN_PATH}/myhtml/source/myhtml")
+target_include_directories(myhtml PUBLIC "${EXTERN_PATH}/myhtml/source")
+
 
 add_subdirectory("${SRC_PATH}/tools")
 add_subdirectory("${SRC_PATH}/crawler")
@@ -42,6 +47,8 @@ add_subdirectory("${TESTS_PATH}")
 ### link libraries to tests_proto executable target
 ### build this target when neccessary with --target
 target_link_libraries(tests_proto PUBLIC
+        cpr::cpr
+        myhtml
         SQLiteCpp
         crawlerlib
         rsmlib

@@ -4,3 +4,6 @@
 [submodule "extern/myhtml"]
 	path = extern/myhtml
 	url = https://github.com/lexborisov/myhtml.git
+[submodule "extern/cpr"]
+	path = extern/cpr
+	url = https://github.com/libcpr/cpr.git
