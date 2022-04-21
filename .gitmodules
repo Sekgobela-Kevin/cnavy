@@ -1,3 +1,6 @@
 [submodule "extern/SQLiteCpp"]
 	path = extern/SQLiteCpp
 	url = https://github.com/SRombauts/SQLiteCpp.git
+[submodule "extern/myhtml"]
+	path = extern/myhtml
+	url = https://github.com/lexborisov/myhtml.git
